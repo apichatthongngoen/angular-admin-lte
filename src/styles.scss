@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "../node_modules/admin-lte/dist/css/adminlte.min.css";
+@import "../node_modules/ionicons/css/ionicons.min.css";
+@import "../node_modules//font-awesome/css/font-awesome.min.css";
+
+@import '~ngx-toastr/toastr';
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
