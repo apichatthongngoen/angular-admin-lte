@@ -11,6 +11,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { LayoutFooterComponent } from './layout/layout-footer/layout-footer.component';
 import { LayoutHeaderComponent } from './layout/layout-header/layout-header.component';
 import { LayoutSidebarComponent } from './layout/layout-sidebar/layout-sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { LayoutSidebarComponent } from './layout/layout-sidebar/layout-sidebar.c
     BrowserModule,
     AppRoutingModule,
     PagesModule,
+    BrowserAnimationsModule,
     // LayoutModule,
 
   ],
