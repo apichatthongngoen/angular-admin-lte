@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from '../layout/layout/layout.component';
 import { MoneyComponent } from './money/money.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MoneyQueueComponent } from './money-queue/money-queue.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'admin', component: MoneyComponent },
             { path: 'dashboard', component: DashboardComponent },
+            { path: 'money-queue', component: MoneyQueueComponent },
 
         ]
 

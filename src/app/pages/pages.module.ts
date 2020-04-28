@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PageRoutingModule } from './pages-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MoneyQueueComponent } from './money-queue/money-queue.component'
 
 
 // import { MoneyComponent } from './money/money.component';
@@ -13,7 +14,9 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 @NgModule({
   declarations: [
 
-    DashboardComponent],
+    DashboardComponent,
+
+    MoneyQueueComponent],
   imports: [
     CommonModule,
     PageRoutingModule
