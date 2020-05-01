@@ -17,9 +17,7 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'money-queue', component: MoneyQueueComponent },
             { path: 'pharmacy-printt', component: PrintPharmacyMinComponent },
-
         ]
-
     },
     {
         path: '**', redirectTo: '/404'

@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./print-pharmacy-min.component.scss']
 })
 export class PrintPharmacyMinComponent implements OnInit {
+  hero = '11231';
+  name_container_header = 'พิมพ์สติกเกอร์ ห้องยา';
 
   constructor() { }
 

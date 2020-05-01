@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-money-queue',
-  templateUrl: './money-queue.component.html',
-  styleUrls: ['./money-queue.component.scss']
+  selector: 'app-print-pharmacy-table',
+  templateUrl: './print-pharmacy-table.component.html',
+  styleUrls: ['./print-pharmacy-table.component.scss']
 })
-export class MoneyQueueComponent implements OnInit {
-  name_container_header = 'คิวการเงิน';
+
+export class PrintPharmacyTableComponent implements OnInit {
+
+  @Input() value: string;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  displayedColumns2 = ['position', 'name', 'weight', 'times'];
-  displayedColumns = ['position', 'name', 'weight'];
+  displayedColumns = ['position', 'name'];
   dataSource = ELEMENT_DATA;
+
 }
+
 
 export interface PeriodicElement {
   name: string;
