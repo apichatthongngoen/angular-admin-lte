@@ -9,12 +9,14 @@ import { MoneyQueueComponent } from './money-queue/money-queue.component'
 // import { LayoutModule } from '../layout/layout.module';
 // money-queue
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { PrintPharmacyMinComponent } from './pharmacy/print-pharmacy/print-pharmacy-min/print-pharmacy-min.component';
 import { PrintPharmacyTableComponent } from './pharmacy/print-pharmacy/print-pharmacy-table/print-pharmacy-table.component';
 
 
 // template
 import { LayoutContentHeaderComponent } from '../layout/layout-content-header/layout-content-header.component';
+import { QueuePharmacyMainComponent } from './pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component';
 
 
 @NgModule({
@@ -27,12 +29,14 @@ import { LayoutContentHeaderComponent } from '../layout/layout-content-header/la
     PrintPharmacyMinComponent,
 
     PrintPharmacyTableComponent,
-    LayoutContentHeaderComponent
+    LayoutContentHeaderComponent,
+    QueuePharmacyMainComponent
   ],
   imports: [
     CommonModule,
     PageRoutingModule,
     MatTableModule,
+    MatTabsModule
 
   ],
   providers: [],
