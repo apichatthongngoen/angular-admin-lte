@@ -17,6 +17,8 @@ import { PrintPharmacyTableComponent } from './pharmacy/print-pharmacy/print-pha
 // template
 import { LayoutContentHeaderComponent } from '../layout/layout-content-header/layout-content-header.component';
 import { QueuePharmacyMainComponent } from './pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component';
+import { QueuePharmacyContentComponent } from './pharmacy/queue-pharmacy/queue-pharmacy-content/queue-pharmacy-content.component';
+import { QueuePharmacyTableComponent } from './pharmacy/queue-pharmacy/queue-pharmacy-table/queue-pharmacy-table.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { QueuePharmacyMainComponent } from './pharmacy/queue-pharmacy/queue-phar
 
     PrintPharmacyTableComponent,
     LayoutContentHeaderComponent,
-    QueuePharmacyMainComponent
+    QueuePharmacyMainComponent,
+    QueuePharmacyContentComponent,
+    QueuePharmacyTableComponent
   ],
   imports: [
     CommonModule,

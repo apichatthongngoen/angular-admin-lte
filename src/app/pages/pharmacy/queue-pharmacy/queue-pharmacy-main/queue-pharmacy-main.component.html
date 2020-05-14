@@ -1,18 +1,45 @@
 <app-layout-content-header [name]="name_container_header"></app-layout-content-header>
-<mat-tab-group>
+<mat-tab-group class="mat-tab-group">
   <mat-tab>
     <ng-template mat-tab-label i18n>
       <i class="fas fa-users nav-icon tabs-icon"></i>
       กลุ่มที่ 1
     </ng-template>
-    11515465468484ฟหกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหห5456444445484ฟ54หก4แ56ฟ4หแ8ฟ4ห8แ4ฟห8
+    <app-queue-pharmacy-content [tabs_group]="tabs_group1"></app-queue-pharmacy-content>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label i18n>
       <i class="fas fa-users nav-icon tabs-icon"></i>
       กลุ่มที่ 2
     </ng-template>
-    11515465468484ฟหกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหห5456444445484ฟ54หก4แ56ฟ4หแ8ฟ4ห8แ4ฟห8
+    <app-queue-pharmacy-content [tabs_group]="tabs_group2"></app-queue-pharmacy-content>
   </mat-tab>
-
+  <mat-tab>
+    <ng-template mat-tab-label i18n>
+      <i class="fas fa-users nav-icon tabs-icon"></i>
+      กลุ่มที่ 3
+    </ng-template>
+    <app-queue-pharmacy-content [tabs_group]="tabs_group3"></app-queue-pharmacy-content>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label i18n="ทดสอบ1">
+      <i class="fas fa-users nav-icon tabs-icon"></i>
+      กลุ่มที่ 4
+    </ng-template>
+    <app-queue-pharmacy-content [tabs_group]="tabs_group4"></app-queue-pharmacy-content>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label i18n="">
+      <i class="fas fa-users nav-icon tabs-icon"></i>
+      กลุ่มที่ 5
+    </ng-template>
+    <app-queue-pharmacy-content [tabs_group]="tabs_group5"></app-queue-pharmacy-content>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label i18n="">
+      <i class="fas fa-users nav-icon tabs-icon"></i>
+      กลุ่มที่ 6
+    </ng-template>
+    <app-queue-pharmacy-content [tabs_group]="tabs_group6"></app-queue-pharmacy-content>
+  </mat-tab>
 </mat-tab-group>

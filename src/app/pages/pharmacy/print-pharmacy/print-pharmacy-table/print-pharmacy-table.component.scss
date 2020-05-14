@@ -1,8 +1,13 @@
 .example-container {
-  height: calc(100vh - 281px);
+  height: calc(100vh - 170px);
   overflow: auto;
 }
 
 table {
   width: 100%;
+}
+
+h4 {
+  margin-bottom: 0px;
+  margin-top: 2px;
 }

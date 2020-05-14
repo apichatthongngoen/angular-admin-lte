@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class QueuePharmacyMainComponent implements OnInit {
 
   name_container_header = 'คิวการเรียกรับยา';
+  tabs_group1 = '1';
+  tabs_group2 = '2';
+  tabs_group3 = '3';
+  tabs_group4 = '4';
+  tabs_group5 = '5';
+  tabs_group6 = '6';
   constructor() { }
 
   ngOnInit(): void {

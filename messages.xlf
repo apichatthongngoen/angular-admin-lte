@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="f15465d26e41f13ee6a9ad90c8a7cbc737da4f68" datatype="html">
+        <source>
+      <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+      กลุ่มที่ 1
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c736502c1e40bdc6fd7faa671c130a93a86e9684" datatype="html">
+        <source>
+      <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+      กลุ่มที่ 2
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="17be4088415f5aa0b00b6d251a730a8bf3a1c123" datatype="html">
+        <source>
+      <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+      กลุ่มที่ 3
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7001f040326667fde7f5e647a86650480380d716" datatype="html">
+        <source>
+      <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+      กลุ่มที่ 4
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">ทดสอบ1</note>
+      </trans-unit>
+      <trans-unit id="56cfd0f55af826c70f0b411d5da2fafeb82aaf9f" datatype="html">
+        <source>
+      <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+      กลุ่มที่ 5
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3fe0117c8d22e93c9d065ac57e9654694c9a6caa" datatype="html">
+        <source>
+      <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+      กลุ่มที่ 6
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92ab7c01f5cc09b449c305d32cc88c1df7486783" datatype="html">
+        <source>test</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
+
 
 // routing
 import { LayoutComponent } from './layout/layout/layout.component';
@@ -14,6 +17,8 @@ import { LayoutHeaderComponent } from './layout/layout-header/layout-header.comp
 import { LayoutSidebarComponent } from './layout/layout-sidebar/layout-sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { LayoutModule } from './layout/layout.module';
+
+registerLocaleData(localeEn, 'en');
 
 @NgModule({
   declarations: [
