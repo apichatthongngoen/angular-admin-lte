@@ -14,9 +14,9 @@ export class QueuePharmacyMainComponent implements OnInit {
   tabs_group4 = '4';
   tabs_group5 = '5';
   tabs_group6 = '6';
+  tabs_group7 = '7';
   constructor() { }
 
   ngOnInit(): void {
   }
-
-}
+} 

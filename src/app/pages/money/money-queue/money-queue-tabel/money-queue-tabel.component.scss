@@ -1,15 +1,10 @@
-table {
-  width: 100%;
-}
-
 .example-container {
-  height: calc(100vh - 267px);
+  height: calc(100vh - 281px);
   overflow: auto;
 }
 
-h4 {
-  margin-bottom: 0px;
-  margin-top: 2px;
+table {
+  width: 100%;
 }
 
 .tomato {
@@ -20,9 +15,9 @@ h4 {
   color: green;
 }
 
-// th {
-//   background-color: green;
-// }
+.white {
+  color: white;
+}
 
 .green-bg {
   background-color: green;

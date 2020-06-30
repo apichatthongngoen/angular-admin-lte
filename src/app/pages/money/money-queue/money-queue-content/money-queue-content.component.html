@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-12 margin-top margin-bot">
+        <p>คิวรอเรียก</p>
+      </div>
+      <div class="col-sm-12">
+        <app-money-queue-tabel></app-money-queue-tabel>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-12 margin-top margin-bot">
+        <p>คิวมีปัญหา</p>
+      </div>
+      <div class="col-sm-12">
+        <app-money-queue-tabel [color_tb]="color_tb_red_bg"></app-money-queue-tabel>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-12 margin-top">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>คิวเรียบร้อยแล้ว</p>
+          </div>
+          <div class="col-sm-6">
+            <p>ค้นหา <input type="text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <app-money-queue-tabel [color_tb]="color_tb_green_bg"></app-money-queue-tabel>
+      </div>
+    </div>
+  </div>

@@ -1,20 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-queue-pharmacy-table',
-  templateUrl: './queue-pharmacy-table.component.html',
-  styleUrls: ['./queue-pharmacy-table.component.scss']
+  selector: 'app-money-queue-tabel',
+  templateUrl: './money-queue-tabel.component.html',
+  styleUrls: ['./money-queue-tabel.component.scss']
 })
-export class QueuePharmacyTableComponent implements OnInit {
+export class MoneyQueueTabelComponent implements OnInit {
   @Input() color_tb: string;
   constructor() { }
 
   ngOnInit(): void {
   }
-  displayedColumns = ['position', 'name', 'time', 'weight'];
+  displayedColumns2 = ['position', 'QHOSXP', 'hn', 'name', 'name2', 'weight', 'times'];
+  displayedColumns = ['position', 'name', 'weight'];
   dataSource = ELEMENT_DATA;
-  // dataSource = '';
+
 }
+
 
 export interface PeriodicElement {
   name: string;
@@ -22,8 +24,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
-
 
 const ELEMENT_DATA: PeriodicElement[] = [
   { position: '1-001', name: 'Hydrogen', weight: 2, symbol: 'H' },

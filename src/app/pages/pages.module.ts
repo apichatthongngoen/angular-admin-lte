@@ -10,6 +10,7 @@ import { MoneyQueueComponent } from './money-queue/money-queue.component'
 // money-queue
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PrintPharmacyMinComponent } from './pharmacy/print-pharmacy/print-pharmacy-min/print-pharmacy-min.component';
 import { PrintPharmacyTableComponent } from './pharmacy/print-pharmacy/print-pharmacy-table/print-pharmacy-table.component';
 
@@ -19,28 +20,33 @@ import { LayoutContentHeaderComponent } from '../layout/layout-content-header/la
 import { QueuePharmacyMainComponent } from './pharmacy/queue-pharmacy/queue-pharmacy-main/queue-pharmacy-main.component';
 import { QueuePharmacyContentComponent } from './pharmacy/queue-pharmacy/queue-pharmacy-content/queue-pharmacy-content.component';
 import { QueuePharmacyTableComponent } from './pharmacy/queue-pharmacy/queue-pharmacy-table/queue-pharmacy-table.component';
+import { MoneyQueueTabelComponent } from './money/money-queue/money-queue-tabel/money-queue-tabel.component';
+import { MoneyQueueMainComponent } from './money/money-queue/money-queue-main/money-queue-main.component';
+import { MoneyQueueContentComponent } from './money/money-queue/money-queue-content/money-queue-content.component';
+
 
 
 @NgModule({
   declarations: [
-
     DashboardComponent,
-
     MoneyQueueComponent,
-
     PrintPharmacyMinComponent,
-
     PrintPharmacyTableComponent,
     LayoutContentHeaderComponent,
     QueuePharmacyMainComponent,
     QueuePharmacyContentComponent,
-    QueuePharmacyTableComponent
+    QueuePharmacyTableComponent,
+    MoneyQueueTabelComponent,
+    MoneyQueueMainComponent,
+    MoneyQueueContentComponent,
+
   ],
   imports: [
     CommonModule,
     PageRoutingModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatButtonToggleModule
 
   ],
   providers: [],

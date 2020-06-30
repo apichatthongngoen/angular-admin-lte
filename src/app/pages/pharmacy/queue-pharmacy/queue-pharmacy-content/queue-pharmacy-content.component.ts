@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class QueuePharmacyContentComponent implements OnInit {
   @Input() tabs_group: string;
+  color_tb_green_bg = 'green-bg';
+  color_tb_red_bg = 'red-bg';
+  show = true;
   constructor() { }
 
   ngOnInit(): void {
