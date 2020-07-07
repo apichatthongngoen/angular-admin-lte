@@ -4,6 +4,8 @@ import { PageRoutingModule } from './pages-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MoneyQueueComponent } from './money-queue/money-queue.component'
 
+// template module
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // import { MoneyComponent } from './money/money.component';
 // import { LayoutModule } from '../layout/layout.module';
@@ -46,7 +48,8 @@ import { MoneyQueueContentComponent } from './money/money-queue/money-queue-cont
     PageRoutingModule,
     MatTableModule,
     MatTabsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatCheckboxModule
 
   ],
   providers: [],

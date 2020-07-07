@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-queue-pharmacy-table',
@@ -11,10 +13,33 @@ export class QueuePharmacyTableComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns = ['position', 'name', 'time', 'weight'];
-  dataSource = ELEMENT_DATA;
-  // dataSource = '';
+  displayedColumns = ['position', 'name', 'time', 'weight', 'select'];
+  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  selection = new SelectionModel<PeriodicElement>(true, []);
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: PeriodicElement): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
 }
+
 
 export interface PeriodicElement {
   name: string;
