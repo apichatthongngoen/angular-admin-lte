@@ -20,9 +20,9 @@ const routes: Routes = [
             { path: 'pharmacy-queue', component: QueuePharmacyMainComponent },
         ]
     },
-    {
-        path: '**', redirectTo: '/404'
-    }
+    // {
+    //     path: '**', redirectTo: '/404'
+    // }
 
 ]
 

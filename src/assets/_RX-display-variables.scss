@@ -1,0 +1,52 @@
+//  $rx_grren_primary: #216435;
+//  $rx_grren_primarylight: #d3e5c5;
+//  $rx_grren_1: #89af52;
+//  $rx_grren_2: #56dc3b;
+//  $rx_grren_3: #c2dc19;
+//  $rx_grren_4: #89c3b3;
+//  $rx_grren_5: #0f2d20;
+//  $rx_grren_6: #1f7904;
+//  $rx_grren_7: #31ae4d;
+
+
+$primary_rx: #216435 !default;
+$secondary_rx: #1f7904 !default;
+$success_rx: #31ae4d !default;
+$info_rx: #34857c !default;
+$warning_rx: #c2dc19 !default;
+$danger_rx: #dc1919 !default;
+$light_rx: #d3e5c5 !default;
+$dark_rx: #0f2d20 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(("primary-rx": $primary_rx,
+    "secondary-rx": $secondary_rx,
+    "success-rx": $success_rx,
+    "info-rx": $info_rx,
+    "warning-rx": $warning_rx,
+    "danger-rx": $danger_rx,
+    "light-rx": $light_rx,
+    "dark-rx": $dark_rx), $theme-colors);
+
+
+
+//  $colors:();
+//  $theme-colors:();
+//  $colors: map-merge(('rx-grren-primary': $rx_grren_primary,
+//      'rx-grren-primarylight': $rx_grren_primarylight,
+//      'rx-grren-1': $rx_grren_1,
+//      'rx-grren-3': $rx_grren_3,
+//      'rx-grren-2': $rx_grren_2,
+//      'rx-grren-4': $rx_grren_4,
+//      'rx-grren-5': $rx_grren_5,
+//      'rx-grren-6': $rx_grren_6,
+//      'rx-grren-7': $rx_grren_7), $colors);
+//  $theme-colors: map-merge(('rx-grren-primary': $rx_grren_primary,
+//      'rx-grren-primarylight': $rx_grren_primarylight,
+//      'rx-grren-1': $rx_grren_1,
+//      'rx-grren-3': $rx_grren_3,
+//      'rx-grren-2': $rx_grren_2,
+//      'rx-grren-4': $rx_grren_4,
+//      'rx-grren-5': $rx_grren_5,
+//      'rx-grren-6': $rx_grren_6,
+//      'rx-grren-7': $rx_grren_7), $theme-colors);

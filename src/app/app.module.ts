@@ -6,6 +6,7 @@ import localeEn from '@angular/common/locales/en';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
+import { DisplayModule } from './display/display.module';
 
 
 // routing
@@ -16,6 +17,9 @@ import { LayoutFooterComponent } from './layout/layout-footer/layout-footer.comp
 import { LayoutHeaderComponent } from './layout/layout-header/layout-header.component';
 import { LayoutSidebarComponent } from './layout/layout-sidebar/layout-sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Display1Component } from './display/display1/display1.component';
+import { Display2Component } from './display/display2/display2.component';
+import { Display3Component } from './display/display3/display3.component';
 // import { LayoutModule } from './layout/layout.module';
 
 registerLocaleData(localeEn, 'en');
@@ -26,7 +30,10 @@ registerLocaleData(localeEn, 'en');
     LayoutComponent,
     LayoutFooterComponent,
     LayoutHeaderComponent,
-    LayoutSidebarComponent
+    LayoutSidebarComponent,
+    Display1Component,
+    Display2Component,
+    Display3Component
 
   ],
   imports: [
@@ -34,6 +41,7 @@ registerLocaleData(localeEn, 'en');
     AppRoutingModule,
     PagesModule,
     BrowserAnimationsModule,
+    DisplayModule
     // LayoutModule,
 
   ],

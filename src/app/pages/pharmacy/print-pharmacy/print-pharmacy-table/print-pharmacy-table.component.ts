@@ -14,7 +14,7 @@ export class PrintPharmacyTableComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns = ['position', 'name', 'qn', 'status', 'wait'];
+  displayedColumns = ['position', 'qn', 'hn', 'name', 'status', 'wait'];
   dataSource = ELEMENT_DATA;
 
 }
