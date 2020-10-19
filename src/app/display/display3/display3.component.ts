@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Display3Component implements OnInit {
 
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
   qndisplay_row1 = [
-    { "id": 1, "qn": "2-001", "dot": "6", "bgcolor": "primary-rx" },
+    { "id": 1, "qn": "2-001", "dot": "6", "bgcolor": "primary-rx " },
     { "id": 1, "qn": "2-002", "dot": "6", "bgcolor": "primary-rx" },
     { "id": 1, "qn": "2-003", "dot": "6", "bgcolor": "primary-rx" },
     { "id": 1, "qn": "2-004", "dot": "6", "bgcolor": "primary-rx" },
