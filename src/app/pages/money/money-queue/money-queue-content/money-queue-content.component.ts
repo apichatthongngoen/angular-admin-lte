@@ -9,9 +9,13 @@ export class MoneyQueueContentComponent implements OnInit {
 
   color_tb_green_bg = 'green-bg';
   color_tb_red_bg = 'red-bg';
+  //ประเภทคิว
+  problem = 'problem';
+  success = 'success';
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+
