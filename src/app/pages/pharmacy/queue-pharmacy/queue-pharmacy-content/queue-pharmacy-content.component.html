@@ -3,15 +3,15 @@
 <div class="row content">
   <div class="col-sm-4" [hidden]="!show">
     <h4>รายการยังไม่ได้เรียกชื่อ</h4>
-    <app-queue-pharmacy-table></app-queue-pharmacy-table>
+    <app-queue-pharmacy-table [tabsGroupQueuePharmacy]="tabsGroupQueuePharmacyContent" ></app-queue-pharmacy-table>
   </div>
   <div class="col-sm-4">
     <h4>คิวมีปัญหา</h4>
-    <app-queue-pharmacy-table [color_tb]="color_tb_red_bg"></app-queue-pharmacy-table>
+    <app-queue-pharmacy-table [tabsGroupQueuePharmacy]="tabsGroupQueuePharmacyContent"  [statusQueue]="problem" [color_tb]="color_tb_red_bg"></app-queue-pharmacy-table>
   </div>
   <div class="col-sm-4">
     <h4>คิวเรียบร้อยแล้ว</h4>
-    <app-queue-pharmacy-table [color_tb]="color_tb_green_bg"></app-queue-pharmacy-table>
+    <app-queue-pharmacy-table [tabsGroupQueuePharmacy]="tabsGroupQueuePharmacyContent" [statusQueue]="success" [color_tb]="color_tb_green_bg"></app-queue-pharmacy-table>
   </div>
 </div>
 <div class="row content footer-container">
