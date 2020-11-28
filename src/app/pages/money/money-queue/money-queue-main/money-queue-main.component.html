@@ -1,3 +1,15 @@
+<!-- <ul class="list-group">
+  <li class="list-group-item active">Get json string data from File </li>
+  <li class="list-group-item" *ngFor="let result of results | keyvalue">
+    key : {{ result.key}} value :
+    {{ result.value }}
+
+  </li>
+</ul> -->
+<div *ngFor="let property of results | keyvalue">
+  {{property.key}}: {{property.value.id_queue}}
+</div>
+
 <app-layout-content-header [name]="name_container_header"></app-layout-content-header>
 <section class="content">
   <div class="container-fluid">

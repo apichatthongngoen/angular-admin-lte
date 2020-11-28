@@ -15,7 +15,7 @@
         <p>คิวมีปัญหา</p>
       </div>
       <div class="col-sm-12">
-        <app-money-queue-tabel [color_tb]="color_tb_red_bg"></app-money-queue-tabel>
+        <app-money-queue-tabel [color_tb]="color_tb_red_bg" [statusQueue]="problem"></app-money-queue-tabel>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col-sm-12">
-        <app-money-queue-tabel [color_tb]="color_tb_green_bg"></app-money-queue-tabel>
+        <app-money-queue-tabel [color_tb]="color_tb_green_bg" [statusQueue]='success'></app-money-queue-tabel>
       </div>
     </div>
   </div>

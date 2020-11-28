@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { DisplayModule } from './display/display.module';
 
+import { BugService } from './shared/bug.service';
+import { GetDataServiceService } from './shared/get-data-service.service';
 
 // routing
 import { LayoutComponent } from './layout/layout/layout.component';
@@ -24,6 +26,7 @@ import { Display3Component } from './display/display3/display3.component';
 
 registerLocaleData(localeEn, 'en');
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +38,7 @@ registerLocaleData(localeEn, 'en');
     Display2Component,
     Display3Component
 
+
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ registerLocaleData(localeEn, 'en');
     // LayoutModule,
 
   ],
-  providers: [],
+  providers: [BugService, GetDataServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,9 +9,12 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class QueuePharmacyTableComponent implements OnInit {
   @Input() color_tb: string;
+  @Input() tabsGroupQueuePharmacy: string;
+  @Input() statusQueue: string;
   constructor() { }
 
   ngOnInit(): void {
+    console.log('Table: ' + this.tabsGroupQueuePharmacy + ' statusQueue : ' + this.statusQueue)
   }
   displayedColumns = ['position', 'name', 'time', 'weight', 'select'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);

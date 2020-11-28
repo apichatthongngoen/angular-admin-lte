@@ -27,6 +27,8 @@ import { MoneyQueueMainComponent } from './money/money-queue/money-queue-main/mo
 import { MoneyQueueContentComponent } from './money/money-queue/money-queue-content/money-queue-content.component';
 
 
+//getdata
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -49,8 +51,8 @@ import { MoneyQueueContentComponent } from './money/money-queue/money-queue-cont
     MatTableModule,
     MatTabsModule,
     MatButtonToggleModule,
-    MatCheckboxModule
-
+    MatCheckboxModule,
+    HttpClientModule
   ],
   providers: [],
 })
