@@ -40,7 +40,7 @@ export class MoneyQueueTabelComponent implements OnInit {
     // if (this.statusQueue == 'success') {
     //   this.btnSuccess = true
     // }
-    const source = timer(100, 2000);
+    const source = timer(100, 1000);
     const subscribe = source.subscribe(val => this.loadData(val));
     // this.loadData("2")
     // this.loadData2();
@@ -117,6 +117,8 @@ export class MoneyQueueTabelComponent implements OnInit {
     //   "id": 123,
     //   "id2": 741
     // }
+    val = Object.assign(val, { "uiDisplay": "money" })
+    console.log(val)
     return this.GetDataServiceService.postDisPay(`servicepoinsub/problem`, val)
       .subscribe((data) => {
         // this.results = data;
@@ -126,7 +128,19 @@ export class MoneyQueueTabelComponent implements OnInit {
       })
   }
   pushQueueAnnounce(val: QueueItem) {
+    val = Object.assign(val, { "uiDisplay": "money" })
     return this.GetDataServiceService.postDisPay(`servicepoinsub/pushqueueannounce`, val)
+      .subscribe((data) => {
+        // this.results = data;
+        console.log(data)
+        this.loadData("")
+        // console.log(val)
+      })
+  }
+  payMentQueue(val: number) {
+    // console.log(val)
+    val = Object.assign(val, { "uiDisplay": "money" })
+    return this.GetDataServiceService.postDisPay(`servicepoinsub/paymentqoueue`, val)
       .subscribe((data) => {
         // this.results = data;
         console.log(data)

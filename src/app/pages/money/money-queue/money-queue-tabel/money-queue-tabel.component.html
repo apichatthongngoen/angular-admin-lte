@@ -40,7 +40,7 @@
           <i class="fa fa-microphone green"></i>
         </button>
 
-          <button type="button" class="btn btn-flat btn-lg" [hidden]="checkNull(element.idAnnounceStatus)">
+          <button type="button" class="btn btn-flat btn-lg" [hidden]="checkNull(element.idAnnounceStatus)" (click)="payMentQueue(element)">
             <i class="fas fa-check-circle green"></i>
         </button>
 

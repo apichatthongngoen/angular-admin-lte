@@ -37,6 +37,9 @@ export interface QueueItem {
     ptTypeName: string;
     qnHos: number;
     hn: string;
+    idQueueAnnounce?: number;
+    id_financial_status_name?: number;
+    uiDisplay?: string
 }
 
 
