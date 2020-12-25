@@ -2,47 +2,158 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { GetDataServiceService } from '../../../../shared/get-data-service.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { timer } from 'rxjs';
+
+import { QueueItem } from '../../../../shared/interface/dataapi';
+import { map, filter } from 'rxjs/operators';
 @Component({
   selector: 'app-queue-pharmacy-table',
   templateUrl: './queue-pharmacy-table.component.html',
-  styleUrls: ['./queue-pharmacy-table.component.scss']
+  styleUrls: ['./queue-pharmacy-table.component.scss'],
 })
 export class QueuePharmacyTableComponent implements OnInit {
   @Input() color_tb: string;
   @Input() tabsGroupQueuePharmacy: string;
   @Input() statusQueue: string;
-  constructor() { }
+
+  public results: QueueItem[]; //
+  public resultsCheckbox: any = []; //
+  constructor(
+    public GetDataServiceService: GetDataServiceService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    console.log('Table: ' + this.tabsGroupQueuePharmacy + ' statusQueue : ' + this.statusQueue)
+    console.log(
+      'Table: ' +
+        this.tabsGroupQueuePharmacy +
+        ' statusQueue : ' +
+        this.statusQueue
+    );
+    const source = timer(100, 300000);
+    const subscribe = source.subscribe((val) => this.loadData(val));
   }
-  displayedColumns = ['position', 'name', 'time', 'weight', 'select'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  displayedColumns = ['q', 'qn', 'name', 'time', 'statusQueue', 'select'];
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  selection = new SelectionModel<QueueItem>(true, []);
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+  test(e, row) {
+    // console.log(e.checked)
+    row = Object.assign(row, { checked: e.checked });
+    console.log(row);
+    let i = this.resultsCheckbox.length;
+    console.log(this.resultsCheckbox.length);
+    this.resultsCheckbox[row.orderQueue] = row;
+    // Object.assign(this.resultsCheckbox, [row.idQueue:row])
+
+    console.log(this.resultsCheckbox);
+
+    // console.log(row.checked)
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+  loadData(val: any) {
+    // this.results = data1;
+    // return this.GetDataServiceService.getDisPay(`servicepoinsub?idServicePoint=1&idServicePointSub=3&statusQueue=${this.statusQueue}&tabsgroupqueuepharmacy=${this.tabsGroupQueuePharmacy}`)
+    return this.GetDataServiceService.getDisPay(
+      `servicepoinsub?statusQueue=${this.statusQueue}&idServicePointSub=3&idServicePoint=1&tabsGroupQueuePharmacy=${this.tabsGroupQueuePharmacy}&uiDisplay=queuepharmacy`
+    ).subscribe((data: any) => {
+      this.results = data;
+      console.log('*********----------*********');
+      console.log(this.statusQueue);
+      console.log(val);
+    });
   }
+  pushQueueAnnounce(
+    val?: QueueItem | number | string,
+    results: any = this.results
+  ) {
+    // val = Object.assign(val, { "uiDisplay": "money" })
+    // return this.GetDataServiceService.postDisPay(`servicepoinsub/pushqueueannounce`, val)
+    //   .subscribe((data) => {
+    //     // this.results = data;
+    //     console.log(data)
+    //     this.loadData("")
+    //     // console.log(val)
+    //   })
+    try {
+      let n: any;
+      let valArr: string[];
+      // let  results:any = data1
+      let resultsObj: QueueItem[] = [];
+      let resultsFilter: QueueItem[];
+      let minMaxValArrOfsplit = [];
+      let GetDataServiceService = this.GetDataServiceService;
+      if (typeof val === 'string') {
+        valArr = val.split(','); //?
+        // console.log(valArr)
+        valArr.forEach(function (value) {
+          let valArrOfsplit = value.split('-');
+          valArrOfsplit.forEach(function (value) {
+            if (valArrOfsplit.length <= 2) {
+              minMaxValArrOfsplit.push(parseInt(value));
+            } else {
+              alertErrorinput();
+            }
+          });
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+          if ((minMaxValArrOfsplit.length = 2)) {
+            for (
+              let i = Math.min.apply(null, minMaxValArrOfsplit);
+              i <= Math.max.apply(null, minMaxValArrOfsplit);
+              i++
+            ) {
+              resultsFilter = results.filter(
+                (x: { orderQueue: string }) => x.orderQueue == i
+              );
+
+              if (resultsFilter.length) {
+                // resultsObj.push(resultsFilter[0]);
+                resultsFilter[0] = Object.assign(resultsFilter[0], {
+                  uiDisplay: 'pharmacyqueue',
+                });
+                postPushQueueAnnounce(resultsFilter[0], GetDataServiceService);
+              }
+            }
+          }
+        });
+
+        console.log(resultsObj);
+      }
+    } catch (error) {
+      throw error;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    function postPushQueueAnnounce(
+      resultsObj: QueueItem,
+      GetDataServiceService: GetDataServiceService
+    ) {
+      return GetDataServiceService.postDisPay(
+        `servicepoinsub/pushqueueannounce`,
+        resultsObj
+      ).subscribe((data) => {
+        // this.results = data;
+        console.log(data);
+        // console.log(val)
+      });
+    }
+    // console.log(val)
+    // console.log(n)
+    function alertErrorinput() {
+      alert('Invalid');
+      throw new Error('Error');
+    }
+    function filterIt(arr?: QueueItem, searchKey?: any) {
+      // return arr.filter(function (obj) {
+      console.log(arr);
+      //   // return Object.keys(obj).some(function (key) {
+      //   // return obj[key].includes(searchKey);
+      //   //   console.log(obj)
+      //   // })
+      // });
+    }
   }
 }
-
 
 export interface PeriodicElement {
   name: string;
@@ -50,8 +161,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
-
 
 const ELEMENT_DATA: PeriodicElement[] = [
   { position: '1-001', name: 'Hydrogen', weight: 2, symbol: 'H' },

@@ -21,7 +21,7 @@ export class GetDataServiceService {
   }
   // GET
   getDisPay(id: string): Observable<QueueItem> {
-    return this.http.get<QueueItem>(this.baseurl + '/dispay/' + id)
+    return this.http.get<QueueItem>(this.baseurl + '/display/' + id)
       .pipe(
         retry(10),
         catchError(this.errorHandl)
@@ -36,7 +36,7 @@ export class GetDataServiceService {
   }
 
   postDisPay(url: string, data): Observable<QueueItem> {
-    return this.http.post<QueueItem>(this.baseurl + '/dispay/' + url, JSON.stringify(data), this.httpOptions)
+    return this.http.post<QueueItem>(this.baseurl + '/display/' + url, JSON.stringify(data), this.httpOptions)
       .pipe(
         retry(10),
         catchError(this.errorHandl)

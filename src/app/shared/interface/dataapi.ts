@@ -18,27 +18,27 @@
 //     id_service_point?: number;
 // }
 export interface QueueItem {
-    idQueue: number;
-    nameQueue: string;
-    orderQueue: number;
-    idServicePointSub: number;
-    idQueueGroup: number;
-    idServiceChannel?: any;
-    statusQueue: string;
-    version: number;
-    vn: string;
-    queueDate: Date;
-    queueTime: string;
-    queueDatetime: Date;
-    createDatetime: Date;
-    updateDatetime?: any;
-    idServicePoint: number;
-    patName: string;
-    ptTypeName: string;
-    qnHos: number;
-    hn: string;
-    idQueueAnnounce?: number;
-    id_financial_status_name?: number;
+    idQueue: number,
+    nameQueue: string,
+    orderQueue: number,
+    idServicePointSub: number,
+    idQueueGroup: number,
+    idServiceChannel?: any,
+    statusQueue: string,
+    version: number,
+    vn: string,
+    queueDate ?: Date,
+    queueTime: string,
+    queueDatetime ?: Date,
+    createDatetime ?: Date,
+    updateDatetime?: any,
+    idServicePoint: number,
+    patName: string,
+    ptTypeName: string,
+    qnHos: number,
+    hn: string,
+    idQueueAnnounce?: number,
+    idFinancialStatusName?: number,
     uiDisplay?: string
 }
 

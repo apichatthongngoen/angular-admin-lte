@@ -6,6 +6,7 @@ import { MoneyQueueComponent } from './money-queue/money-queue.component'
 
 // template module
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 // import { MoneyComponent } from './money/money.component';
 // import { LayoutModule } from '../layout/layout.module';
@@ -15,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PrintPharmacyMinComponent } from './pharmacy/print-pharmacy/print-pharmacy-min/print-pharmacy-min.component';
 import { PrintPharmacyTableComponent } from './pharmacy/print-pharmacy/print-pharmacy-table/print-pharmacy-table.component';
+
 
 
 // template
@@ -52,7 +54,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     MatButtonToggleModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule
   ],
   providers: [],
 })
