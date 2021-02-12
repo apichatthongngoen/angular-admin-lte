@@ -7,17 +7,13 @@ import { Display3Component } from './display3/display3.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    { path: 'display', component: Display1Component },
-    { path: 'display2', component: Display2Component },
-    { path: 'display3', component: Display3Component },
-    { path: 'home', component: HomeComponent },
-
-
-]
-
-
+  { path: 'display', component: Display1Component },
+  { path: 'display2', component: Display2Component },
+  { path: 'display3', component: Display3Component },
+  { path: 'home', component: HomeComponent },
+];
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class DisplayRoutingModule { }
+export class DisplayRoutingModule {}
