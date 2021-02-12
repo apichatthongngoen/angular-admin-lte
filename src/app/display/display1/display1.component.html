@@ -6,7 +6,7 @@
         <div class="fontsize60">จุดรับยา</div>
       </div>
       <div class="col-sm-2">
-        <h2> time </h2>
+        <h2>time</h2>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
       <!-- ตัวใหญ่ -->
       <div class="col-sm-12">
         <div class="row margin-top">
-          <div class="col-sm-6 offset-1 ">
+          <div class="col-sm-6 offset-1">
             <div class="row">
               <div class="col-sm-12 bg-primary-rx fontQN-header">
                 คิวที่เรียกเข้ารับบริการ
@@ -26,11 +26,9 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-2  QN-header2">
+          <div class="col-sm-2 QN-header2">
             <div class="row">
-              <div class="col-sm-12 bg-primary-rx fontQN-header">
-                จุดที่
-              </div>
+              <div class="col-sm-12 bg-primary-rx fontQN-header">จุดที่</div>
               <div class="col-sm-12 bg-white fontQN">
                 <P>1</P>
               </div>
@@ -39,23 +37,23 @@
         </div>
       </div>
       <div class="col-sm-12">
-
         <div class="row p-1">
-          <div class="col-sm-4" *ngFor="let qndisplay1 of qndisplay1">
+          <div class="col-sm-4" *ngFor="let result of results">
             <div class="row p-2">
-              <div class="col-sm-4 QN-body-left bg-{{qndisplay1.bgcolor}}">
+              <div
+                class="col-sm-4 QN-body-left bg-{{ result.ColorQueueGroup }}"
+              >
                 <p class="QN-body-left-content-h">จุดที่</p>
-                <p class="QN-body-left-content-b">{{qndisplay1.dot}}</p>
+                <p class="QN-body-left-content-b">
+                  {{ result.nameServiceChannel }}
+                </p>
               </div>
               <div class="col-sm-8 QN-body-right bg-white">
-                <p class="QN-body-right-content">{{qndisplay1.qn}}</p>
+                <p class="QN-body-right-content">{{ result.nameQueue }}</p>
               </div>
             </div>
           </div>
-
         </div>
-
-
       </div>
     </div>
   </div>
