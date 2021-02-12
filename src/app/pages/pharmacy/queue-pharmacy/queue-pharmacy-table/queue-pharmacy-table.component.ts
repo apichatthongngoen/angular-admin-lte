@@ -16,12 +16,13 @@ import { map, filter } from 'rxjs/operators';
 export class QueuePharmacyTableComponent implements OnInit {
   @Input() color_tb: string;
   @Input() tabsGroupQueuePharmacy: string;
+  @Input() selectedValueServiceChannelTable: string;
   @Input() statusQueue: string;
 
   public results: QueueItem[]; //
   public resultsCheckbox: any = []; //
   constructor(
-    public GetDataServiceService: GetDataServiceService,
+    public getDataServiceService: GetDataServiceService,
     private http: HttpClient
   ) {}
 
@@ -32,7 +33,8 @@ export class QueuePharmacyTableComponent implements OnInit {
         ' statusQueue : ' +
         this.statusQueue
     );
-    const source = timer(100, 300000);
+
+    const source = timer(100, 50000);
     const subscribe = source.subscribe((val) => this.loadData(val));
   }
   displayedColumns = ['q', 'qn', 'name', 'time', 'statusQueue', 'select'];
@@ -56,14 +58,16 @@ export class QueuePharmacyTableComponent implements OnInit {
   loadData(val: any) {
     // this.results = data1;
     // return this.GetDataServiceService.getDisPay(`servicepoinsub?idServicePoint=1&idServicePointSub=3&statusQueue=${this.statusQueue}&tabsgroupqueuepharmacy=${this.tabsGroupQueuePharmacy}`)
-    return this.GetDataServiceService.getDisPay(
-      `servicepoinsub?statusQueue=${this.statusQueue}&idServicePointSub=3&idServicePoint=1&tabsGroupQueuePharmacy=${this.tabsGroupQueuePharmacy}&uiDisplay=queuepharmacy`
-    ).subscribe((data: any) => {
-      this.results = data;
-      console.log('*********----------*********');
-      console.log(this.statusQueue);
-      console.log(val);
-    });
+    return this.getDataServiceService
+      .getDisPay(
+        `servicepoinsub?statusQueue=${this.statusQueue}&idServicePointSub=3&idServicePoint=1&tabsGroupQueuePharmacy=${this.tabsGroupQueuePharmacy}&uiDisplay=queuepharmacy`
+      )
+      .subscribe((data: any) => {
+        this.results = data;
+        console.log('*********----------*********');
+        console.log(this.statusQueue);
+        console.log(val);
+      });
   }
   pushQueueAnnounce(
     val?: QueueItem | number | string,
@@ -77,6 +81,7 @@ export class QueuePharmacyTableComponent implements OnInit {
     //     this.loadData("")
     //     // console.log(val)
     //   })
+
     try {
       let n: any;
       let valArr: string[];
@@ -84,7 +89,9 @@ export class QueuePharmacyTableComponent implements OnInit {
       let resultsObj: QueueItem[] = [];
       let resultsFilter: QueueItem[];
       let minMaxValArrOfsplit = [];
-      let GetDataServiceService = this.GetDataServiceService;
+      let selectedValueServiceChannelTable = this
+        .selectedValueServiceChannelTable;
+      let getDataServiceService = this.getDataServiceService;
       if (typeof val === 'string') {
         valArr = val.split(','); //?
         // console.log(valArr)
@@ -107,35 +114,36 @@ export class QueuePharmacyTableComponent implements OnInit {
               resultsFilter = results.filter(
                 (x: { orderQueue: string }) => x.orderQueue == i
               );
-
+              console.log(resultsFilter);
               if (resultsFilter.length) {
                 // resultsObj.push(resultsFilter[0]);
                 resultsFilter[0] = Object.assign(resultsFilter[0], {
                   uiDisplay: 'pharmacyqueue',
+                  idServiceChannel: selectedValueServiceChannelTable,
                 });
-                postPushQueueAnnounce(resultsFilter[0], GetDataServiceService);
+                // console.log(selectedValueServiceChannelTable);
+                postPushQueueAnnounce(resultsFilter[0], getDataServiceService);
               }
             }
           }
         });
-
-        console.log(resultsObj);
       }
     } catch (error) {
       throw error;
     }
+
     function postPushQueueAnnounce(
       resultsObj: QueueItem,
-      GetDataServiceService: GetDataServiceService
+      getDataServiceService: GetDataServiceService
     ) {
-      return GetDataServiceService.postDisPay(
-        `servicepoinsub/pushqueueannounce`,
-        resultsObj
-      ).subscribe((data) => {
-        // this.results = data;
-        console.log(data);
-        // console.log(val)
-      });
+      console.log(resultsObj);
+      return getDataServiceService
+        .postDisPay(`servicepoinsub/pushqueueannounce`, resultsObj)
+        .subscribe((data) => {
+          // this.results = data;
+          console.log(data);
+          // console.log(val)
+        });
     }
     // console.log(val)
     // console.log(n)

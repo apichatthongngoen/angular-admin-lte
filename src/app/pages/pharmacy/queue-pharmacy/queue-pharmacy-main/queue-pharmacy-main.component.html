@@ -1,4 +1,30 @@
-<app-layout-content-header [name]="name_container_header"></app-layout-content-header>
+<!-- <div class="row">
+  <div class="col-md-12">
+    <app-layout-content-header
+      [name]="name_container_header"
+    ></app-layout-content-header>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-6 mt-2 ml-2">
+    <h1>คิวการเรียกรับยา</h1>
+  </div>
+  <div class="col-md-1 offset-3 mt-2">
+    <mat-form-field>
+      <mat-label>เลือกห้อง </mat-label>
+      <mat-select [(value)]="selectedValueServiceChannel">
+        <mat-option
+          *ngFor="let result of results"
+          [value]="result.idServiceChannel"
+        >
+          {{ result.nameServiceChannel }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<!-- <p>Selected food: {{ selectedValue }}</p> -->
 <section class="content">
   <div class="container-fluid">
     <mat-tab-group class="mat-tab-group">
@@ -7,49 +33,78 @@
           <i class="fas fa-users nav-icon tabs-icon"></i>
           กลุ่มที่ 1
         </ng-template>
-        <app-queue-pharmacy-content [tabsGroupQueuePharmacyContent]="tabsGroup1"></app-queue-pharmacy-content>
+        <app-queue-pharmacy-content
+          [tabsGroupQueuePharmacyContent]="tabsGroup1"
+          [selectedValueServiceChannelContent]="selectedValueServiceChannel"
+        ></app-queue-pharmacy-content
+        >,
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label i18n>
           <i class="fas fa-users nav-icon tabs-icon"></i>
-          กลุ่มที่ 2 
+          กลุ่มที่ 2
         </ng-template>
-        <app-queue-pharmacy-content [tabsGroupQueuePharmacyContent]="tabsGroup2"></app-queue-pharmacy-content>
+        <app-queue-pharmacy-content
+          [tabsGroupQueuePharmacyContent]="tabsGroup2"
+          [selectedValueServiceChannelContent]="selectedValueServiceChannel"
+        ></app-queue-pharmacy-content>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label i18n>
           <i class="fas fa-users nav-icon tabs-icon"></i>
           กลุ่มที่ 3
         </ng-template>
-        <app-queue-pharmacy-content [tabsGroupQueuePharmacyContent]="tabsGroup3"></app-queue-pharmacy-content>
+        <app-queue-pharmacy-content
+          [tabsGroupQueuePharmacyContent]="tabsGroup3"
+          [selectedValueServiceChannelContent]="selectedValueServiceChannel"
+        ></app-queue-pharmacy-content>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label i18n="ทดสอบ1">
           <i class="fas fa-users nav-icon tabs-icon"></i>
           กลุ่มที่ 4
         </ng-template>
-        <app-queue-pharmacy-content [tabsGroupQueuePharmacyContent]="tabsGroup4"></app-queue-pharmacy-content>
+        <app-queue-pharmacy-content
+          [tabsGroupQueuePharmacyContent]="tabsGroup4"
+          [selectedValueServiceChannelContent]="selectedValueServiceChannel"
+        ></app-queue-pharmacy-content>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label i18n="">
           <i class="fas fa-users nav-icon tabs-icon"></i>
           กลุ่มที่ 5
         </ng-template>
-        <app-queue-pharmacy-content [tabsGroupQueuePharmacyContent]="tabsGroup5"></app-queue-pharmacy-content>
+        <app-queue-pharmacy-content
+          [tabsGroupQueuePharmacyContent]="tabsGroup5"
+          [selectedValueServiceChannelContent]="selectedValueServiceChannel"
+        ></app-queue-pharmacy-content>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label i18n="">
           <i class="fas fa-users nav-icon tabs-icon"></i>
           กลุ่มที่ 6
         </ng-template>
-        <app-queue-pharmacy-content [tabsGroupQueuePharmacyContent]="tabsGroup6"></app-queue-pharmacy-content>
+        <app-queue-pharmacy-content
+          [tabsGroupQueuePharmacyContent]="tabsGroup6"
+          [selectedValueServiceChannelContent]="selectedValueServiceChannel"
+        ></app-queue-pharmacy-content>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label i18n="">
           <i class="fas fa-users nav-icon tabs-icon"></i>
           กลุ่มที่ 7
         </ng-template>
-        <app-queue-pharmacy-content [tabsGroupQueuePharmacyContent]="tabsGroup7"></app-queue-pharmacy-content>
+        <app-queue-pharmacy-content
+          [tabsGroupQueuePharmacyContent]="tabsGroup7"
+          [selectedValueServiceChannelContent]="selectedValueServiceChannel"
+        ></app-queue-pharmacy-content>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label i18n="">
+          <i class="fas fa-users nav-icon tabs-icon"></i>
+          กลุ่มที่ 7
+        </ng-template>
       </mat-tab>
     </mat-tab-group>
   </div>
