@@ -4,43 +4,50 @@ import { Observable, throwError, timer } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { QueueItem } from './interface/dataapi';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetDataServiceService {
-  baseurl: string = 'http://localhost:4008/api';
+  baseurl: string = 'http://192.168.60.254:4008/api';
   // baseurl: string = 'https://jsonplaceholder.typicode.com';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
+      'Content-Type': 'application/json',
+    }),
+  };
   // GET
   getDisPay(id: string): Observable<QueueItem> {
-    return this.http.get<QueueItem>(this.baseurl + '/display/' + id)
-      .pipe(
-        retry(10),
-        catchError(this.errorHandl)
-      )
+    return this.http
+      .get<QueueItem>(this.baseurl + '/display/' + id)
+      .pipe(retry(10), catchError(this.errorHandl));
   }
   GetIssue1(id: string) {
-    return this.http.get(this.baseurl + '/' + id, { observe: 'response' })
-      .pipe(
-        retry(1),
-        catchError(this.errorHandl)
-      )
+    return this.http
+      .get(this.baseurl + '/' + id, { observe: 'response' })
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
   postDisPay(url: string, data): Observable<QueueItem> {
-    return this.http.post<QueueItem>(this.baseurl + '/display/' + url, JSON.stringify(data), this.httpOptions)
-      .pipe(
-        retry(10),
-        catchError(this.errorHandl)
+    return this.http
+      .post<QueueItem>(
+        this.baseurl + '/display/' + url,
+        JSON.stringify(data),
+        this.httpOptions
       )
+      .pipe(retry(10), catchError(this.errorHandl));
+  }
+
+  postAPI(url: string, data): Observable<QueueItem> {
+    return this.http
+      .post<QueueItem>(
+        this.baseurl + '/' + url,
+        JSON.stringify(data),
+        this.httpOptions
+      )
+      .pipe(retry(10), catchError(this.errorHandl));
   }
 
   // Error handling
