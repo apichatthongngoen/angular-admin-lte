@@ -63,3 +63,16 @@ export interface InterfaceScreenCalledQueue {
   idServiceChannel: number;
   nameServiceChannel: string;
 }
+
+export declare interface QueueGroupPrint {
+  nameQueue: string;
+  orderQueue: number;
+  idQueueGroup: number;
+  idServicePoint: string;
+  idServicePointSub: number;
+  hn: string;
+  fname: string;
+  lname: string;
+  age: number;
+  Date: string;
+}
