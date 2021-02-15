@@ -1,29 +1,35 @@
 <div class="row">
-  <div class="col-sm-12 Header">
-    <h5>
-      Scan Barcode &nbsp;&nbsp;<i class="barcode icon"></i> ลงทะเบียนใบสั่งยา
-    </h5>
+  <div class="col-sm-12 Header bg-green">
+    <div class="row">
+      <div class="col-sm-12 mt-2 ml-3">
+        <h1>
+          Scan Barcode &nbsp;&nbsp;<i class="bi bi-upc-scan"></i> &nbsp;
+          ลงทะเบียนใบสั่งยา
+        </h1>
+      </div>
+    </div>
   </div>
   <div class="col-sm-12">
-    <div class="row">
-      <div class="col-sm-12">HN/หมายเลขประจำตัวประชาชน</div>
+    <div class="row mt-2 ml-3 mr-3">
+      <div class="col-sm-12"><h3>HN/หมายเลขประจำตัวประชาชน</h3></div>
       <div class="col-sm-12">
         <div class="input-group input-group-lg mb-3">
           <input
             type="text"
             class="form-control"
-            placeholder="Recipient's
-            username"
+            placeholder="HN/หมายเลขประจำตัวประชาชน"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             #inputHNSearch
             (keyup.enter)="pushCreateQueue($event, inputHNSearch.value)"
+            (keypress)="inputHNSearchkeypress($event)"
+            [(ngModel)]="inputHNSearchVal"
           />
           <div class="input-group-append">
             <!-- <span class="input-group-text" id="basic-addon2">ลงทะเบียน</span> -->
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-success"
               (click)="pushCreateQueue($event, inputHNSearch.value)"
             >
               ลงทะเบียน
@@ -32,7 +38,59 @@
         </div>
       </div>
 
-      <div class="col-sm-12"></div>
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-8">
+            <h1>{{ queueGroupPrint.nameQueue || "11" }}</h1>
+          </div>
+          <div class="col-sm-4">
+            <div class="row">
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">7</button>
+              </div>
+              <div class="col-sm-autoauto">
+                <button type="button" class="btn btn-success btn-lg">8</button>
+              </div>
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">9</button>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">7</button>
+              </div>
+              <div class="col-sm-autoauto">
+                <button type="button" class="btn btn-success btn-lg">8</button>
+              </div>
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">9</button>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">7</button>
+              </div>
+              <div class="col-sm-autoauto">
+                <button type="button" class="btn btn-success btn-lg">8</button>
+              </div>
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">9</button>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">7</button>
+              </div>
+              <div class="col-sm-autoauto">
+                <button type="button" class="btn btn-success btn-lg">8</button>
+              </div>
+              <div class="col-sm-auto">
+                <button type="button" class="btn btn-success btn-lg">9</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
