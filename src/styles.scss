@@ -8,7 +8,7 @@
 
 // Bootstrap
 // ---------------------------------------------------
-@import './assets/RX-display-variables';
+@import "./assets/RX-display-variables";
 @import "../node_modules/admin-lte/build/scss/AdminLTE.scss";
 
 // @import '../node_modules/admin-lte/build/scss/~bootstrap/scss/functions';
@@ -29,12 +29,12 @@
 // @import '../node_modules/admin-lte/build/scss/parts/plugins';
 // @import '../node_modules/admin-lte/build/scss/parts/miscellaneous';
 
-
-
 @import "../node_modules/ionicons/css/ionicons.min.css";
-@import "../node_modules//font-awesome/css/font-awesome.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+// D:\project\angular-admin-lte\node_modules\bootstrap-icons\font\bootstrap-icons.css
 
-@import '~ngx-toastr/toastr';
+@import "~ngx-toastr/toastr";
 
 // ::-webkit-scrollbar {
 //   width: 10px;
@@ -64,8 +64,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(77, 77, 77, 0.8);
 }
-
-
 
 html,
 body {
