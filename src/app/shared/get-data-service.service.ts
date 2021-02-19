@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, timer } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { QueueItem } from './interface/dataapi';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GetDataServiceService {
-  baseurl: string = 'http://192.168.60.254:4008/api';
+  baseurl: string = `http://` + environment.apiHost + `/api`;
   // baseurl: string = 'https://jsonplaceholder.typicode.com';
 
   constructor(private http: HttpClient) {}
@@ -49,7 +50,11 @@ export class GetDataServiceService {
       )
       .pipe(retry(10), catchError(this.errorHandl));
   }
-
+  getKPHSMartCardReader(): Observable<QueueItem> {
+    return this.http
+      .get<QueueItem>('http://' + environment.KPHSMartCardReaderHost)
+      .pipe(retry(1), catchError(this.errorHandl));
+  }
   // Error handling
   errorHandl(error) {
     let errorMessage = '';
