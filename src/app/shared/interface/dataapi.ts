@@ -40,6 +40,8 @@ export interface QueueItem {
   idQueueAnnounce?: number;
   idFinancialStatusName?: number;
   uiDisplay?: string;
+  cid?: string;
+  CID?: string;
 }
 
 export interface ServiceChannel {
@@ -70,7 +72,7 @@ export declare interface QueueGroupPrint {
   idQueueGroup: number;
   idServicePoint: string;
   idServicePointSub: number;
-  hn: string;
+  hn: string | null;
   fname: string;
   lname: string;
   age: number;
