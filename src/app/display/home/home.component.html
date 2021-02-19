@@ -21,7 +21,7 @@
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             #inputHNSearch
-            (keyup.enter)="pushCreateQueue($event, inputHNSearch.value)"
+            (keyup.enter)="pushCreateQueue(inputHNSearch.value, $event)"
             (keypress)="inputHNSearchkeypress($event)"
             [(ngModel)]="inputHNSearchVal"
           />
@@ -30,7 +30,7 @@
             <button
               type="button"
               class="btn btn-success"
-              (click)="pushCreateQueue($event, inputHNSearch.value)"
+              (click)="pushCreateQueue(inputHNSearch.value, $event)"
             >
               ลงทะเบียน
             </button>
@@ -40,9 +40,7 @@
 
       <div class="col-sm-12">
         <div class="row">
-          <div class="col-sm-8">
-            <h1>{{ queueGroupPrint.nameQueue || "11" }}</h1>
-          </div>
+          <div class="col-sm-8"></div>
           <div class="col-sm-4">
             <div class="row">
               <div class="col-sm-auto">
