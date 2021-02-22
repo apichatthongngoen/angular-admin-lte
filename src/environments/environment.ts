@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiHost: 'xxxxx',
+  apiHost: '192.168.60.254:4008',
   KPHSMartCardReaderHost: 'localhost:8084',
 };
 
