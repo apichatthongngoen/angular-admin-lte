@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 import { GetDataServiceService } from '../../shared/get-data-service.service';
-import { GetKPHSMartCardReader } from '../../shared/KPHSMartCardReader';
+// import { GetKPHSMartCardReader } from '../../shared/KPHSMartCardReader';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { timer } from 'rxjs';
 
@@ -35,8 +35,6 @@ import * as JsBarcode from 'JsBarcode';
 })
 export class HomeComponent implements OnInit {
   @Input() pdf: any;
-  @Input() filename = 'download.pdf';
-  @Input() demo: boolean;
 
   public results: QueueItem[]; //
   public queueGroupPrint: QueueGroupPrint;
