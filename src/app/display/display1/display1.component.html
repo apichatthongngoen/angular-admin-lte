@@ -1,55 +1,57 @@
-<div class="row">
-  <!-- ส่วนบน -->
-  <div class="col-sm-12 bg-primary-rx">
-    <div class="row">
-      <div class="col-sm-10">
-        <div class="fontsize60">จุดรับยา</div>
-      </div>
-      <div class="col-sm-2">
-        <h2>time</h2>
+<div class="col-sm-12">
+  <div class="row">
+    <!-- ส่วนบน -->
+    <div class="col-sm-12 bg-primary-rx">
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="fontsize60">จุดรับยา</div>
+        </div>
+        <div class="col-sm-2">
+          <h2>time</h2>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- กลาง -->
-  <div class="col-sm-12 div-content bg-light-rx">
-    <div class="row">
-      <!-- ตัวใหญ่ -->
-      <div class="col-sm-12">
-        <div class="row margin-top">
-          <div class="col-sm-6 offset-1">
-            <div class="row">
-              <div class="col-sm-12 bg-primary-rx fontQN-header">
-                คิวที่เรียกเข้ารับบริการ
-              </div>
-              <div class="col-sm-12 bg-white fontQN">
-                <P>1-001</P>
+    <!-- กลาง -->
+    <div class="col-sm-12 div-content bg-light-rx">
+      <div class="row">
+        <!-- ตัวใหญ่ -->
+        <div class="col-sm-12">
+          <div class="row margin-top">
+            <div class="col-sm-6 offset-1">
+              <div class="row">
+                <div class="col-sm-12 bg-primary-rx fontQN-header">
+                  คิวที่เรียกเข้ารับบริการ
+                </div>
+                <div class="col-sm-12 bg-white fontQN">
+                  <P>1-001</P>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-2 QN-header2">
-            <div class="row">
-              <div class="col-sm-12 bg-primary-rx fontQN-header">จุดที่</div>
-              <div class="col-sm-12 bg-white fontQN">
-                <P>1</P>
+            <div class="col-sm-2 QN-header2">
+              <div class="row">
+                <div class="col-sm-12 bg-primary-rx fontQN-header">จุดที่</div>
+                <div class="col-sm-12 bg-white fontQN">
+                  <P>1</P>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="row p-1">
-          <div class="col-sm-4" *ngFor="let result of results">
-            <div class="row p-2">
-              <div
-                class="col-sm-4 QN-body-left bg-{{ result.ColorQueueGroup }}"
-              >
-                <p class="QN-body-left-content-h">จุดที่</p>
-                <p class="QN-body-left-content-b">
-                  {{ result.nameServiceChannel }}
-                </p>
-              </div>
-              <div class="col-sm-8 QN-body-right bg-white">
-                <p class="QN-body-right-content">{{ result.nameQueue }}</p>
+        <div class="col-sm-12">
+          <div class="row p-1">
+            <div class="col-sm-4" *ngFor="let result of results">
+              <div class="row p-2">
+                <div
+                  class="col-sm-4 QN-body-left bg-{{ result.ColorQueueGroup }}"
+                >
+                  <p class="QN-body-left-content-h">จุดที่</p>
+                  <p class="QN-body-left-content-b">
+                    {{ result.nameServiceChannel }}
+                  </p>
+                </div>
+                <div class="col-sm-8 QN-body-right bg-white">
+                  <p class="QN-body-right-content">{{ result.nameQueue }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -58,11 +60,3 @@
     </div>
   </div>
 </div>
-
-<!-- 
-<ul>
-  <li *ngFor="let product of products">
-    <h2>{{product.name}} / ${{product.price}}</h2>
-    <p> {{product.description}} </p>
-  </li>
-</ul> -->
