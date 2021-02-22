@@ -10,6 +10,7 @@ import { DisplayModule } from './display/display.module';
 
 import { BugService } from './shared/bug.service';
 import { GetDataServiceService } from './shared/get-data-service.service';
+// import { GetKPHSMartCardReader } from './shared/KPHSMartCardReader';
 
 // routing
 import { LayoutComponent } from './layout/layout/layout.component';
@@ -26,7 +27,6 @@ import { Display3Component } from './display/display3/display3.component';
 
 registerLocaleData(localeEn, 'en');
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,20 +36,17 @@ registerLocaleData(localeEn, 'en');
     LayoutSidebarComponent,
     Display1Component,
     Display2Component,
-    Display3Component
-
-
+    Display3Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PagesModule,
     BrowserAnimationsModule,
-    DisplayModule
+    DisplayModule,
     // LayoutModule,
-
   ],
   providers: [BugService, GetDataServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

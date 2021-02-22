@@ -1,28 +1,57 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 import { GetDataServiceService } from '../../shared/get-data-service.service';
+// import { GetKPHSMartCardReader } from '../../shared/KPHSMartCardReader';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { timer } from 'rxjs';
 
 import { QueueItem, QueueGroupPrint } from '../../shared/interface/dataapi';
 import { map } from 'rxjs/operators';
 
+// print queue
+
+// import * as pdfMakeConfig from 'pdfmake/build/pdfmake.js';
+// import * as pdfFontsX from 'pdfmake-unicode/dist/pdfmake-unicode.js';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from '../../shared/pdfmake/vfs_fonts';
+// import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+(pdfMake as any).fonts = {
+  THSarabunNew: {
+    normal: 'THSarabunNew.ttf',
+    bold: 'THSarabunNew Bold.ttf',
+  },
+};
+import * as JsBarcode from 'JsBarcode';
+
+// const pdfMakeX = require('pdfmake/build/pdfmake.js');
+// const pdfFontsX = require('pdfmake-unicode/dist/pdfmake-unicode.js');
+// pdfMakeX.vfs = pdfFontsX.pdfMake.vfs;
+// import * as pdfMake from 'pdfmake/build/pdfmake';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  @Input() pdf: any;
+
   public results: QueueItem[]; //
   public queueGroupPrint: QueueGroupPrint;
+  public cid: string;
+  public cid1: string;
   inputHNSearchVal: string = '';
   @ViewChild('inputHNSearch') inputHNSearch: ElementRef;
   constructor(
     public getDataServiceService: GetDataServiceService,
+    // public getKPHSMartCardReader: GetKPHSMartCardReader,
     private http: HttpClient
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.getKPHSMartCardReader();
+    this.getDataFromIDCardTimeOut();
+  }
   private charArray: [number, string][] = [
     [3592, '0'],
     [3653, '1'],
@@ -37,24 +66,26 @@ export class HomeComponent implements OnInit {
   ];
   private charMap: Map<number, string> = new Map(this.charArray);
 
-  pushCreateQueue(event, inputHNSearch: string) {
+  pushCreateQueue(inputHNSearch: string, event?: any) {
     // console.log(event);
-    // console.log(inputHNSearch);
+    console.log(inputHNSearch);
     let data = {
       id: '1',
       hn: inputHNSearch,
     };
+    // this.getKPHSMartCardReader.loadData();
     this.getDataServiceService
       .postAPI(`createqueue`, data)
       .subscribe((data: any) => {
         // this.results = data;
-        this.queueGroupPrint = data;
+        // this.queueGroupPrint = data;
+        this.printQueue(data);
         // alert(data.nameQueue || 'ERROR');
-
-        // console.log(val)
+        console.log(data);
       });
     return;
   }
+
   inputHNSearchkeypress(event) {
     this.keyMap(event);
   }
@@ -68,5 +99,88 @@ export class HomeComponent implements OnInit {
       this.inputHNSearchVal =
         this.inputHNSearchVal + this.charMap.get(event.charCode);
     }
+  }
+  printQueue(data: QueueGroupPrint) {
+    if (data.hn) {
+      this.pdf = {
+        pageSize: 'A4',
+        pageMargins: [5, 0, 450, 30],
+        content: [
+          // {
+          //   text: ` โรงพยาบาลกำแพงเพชร`,
+          //   fontSize: 20,
+          // },
+          {
+            text: ` คิว ห้องการเงิน / รับยา`,
+            fontSize: 20,
+          },
+          // { image: this.textToBase64Barcode(data.hn), width: 100 },
+          {
+            text: ` HN ` + data.hn + ` อายุ ` + data.age,
+            fontSize: 15,
+          },
+          { text: data.fname + ` ` + data.lname + ` `, fontSize: 15 },
+          {
+            text: `คิว ` + data.nameQueue,
+            fontSize: 40,
+            pageBreak: 'after',
+          },
+          {
+            text: data.Date,
+            fontSize: 15,
+          },
+        ],
+        defaultStyle: {
+          font: 'THSarabunNew',
+          fontSize: 14,
+        },
+      };
+      pdfMake.createPdf(this.pdf).print();
+    }
+  }
+  textToBase64Barcode(text: string): string {
+    let canvas: HTMLCanvasElement = document.createElement('canvas');
+    JsBarcode(canvas, text, {
+      format: 'CODE128',
+      width: 4,
+      height: 80,
+      displayValue: false,
+    });
+    return canvas.toDataURL('image/png');
+  }
+  getKPHSMartCardReader() {
+    return this.getDataServiceService
+      .getKPHSMartCardReader()
+      .subscribe((data) => {
+        // this.results = data;
+        this.cid = data.CID;
+        // console.log(data);
+        // this.getDataFromIDCard(data.CID);
+      });
+  }
+  getDataFromIDCardTimeOut() {
+    setTimeout(() => {
+      this.getKPHSMartCardReader();
+      let cid: string = this.cid;
+      console.log(
+        '🚀 ~ file: home.component.ts ~ line 167 ~ HomeComponent ~ setTimeout ~ cid',
+        cid
+      );
+
+      // console.log(55);
+      if (cid != null && cid != 'null' && cid != '') {
+        if (cid != this.cid1) {
+          this.cid1 = cid;
+          this.pushCreateQueue(this.cid1);
+          this.getDataFromIDCardTimeOut();
+        } else {
+          this.getDataFromIDCardTimeOut();
+        }
+      } else {
+        this.cid1 = cid;
+        // console.log('id: NULL');
+        this.getDataFromIDCardTimeOut();
+      }
+    }, 1000);
   }
 }

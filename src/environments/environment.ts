@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiHost: '192.168.60.254:4008',
+  KPHSMartCardReaderHost: 'localhost:8084',
 };
 
 /*
