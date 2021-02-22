@@ -10,7 +10,7 @@ import { DisplayModule } from './display/display.module';
 
 import { BugService } from './shared/bug.service';
 import { GetDataServiceService } from './shared/get-data-service.service';
-import { GetKPHSMartCardReader } from './shared/KPHSMartCardReader';
+// import { GetKPHSMartCardReader } from './shared/KPHSMartCardReader';
 
 // routing
 import { LayoutComponent } from './layout/layout/layout.component';
