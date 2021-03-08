@@ -1,47 +1,49 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 
-import { GetDataServiceService } from '../../shared/get-data-service.service';
+import { GetDataServiceService } from "../../shared/get-data-service.service";
 // import { GetKPHSMartCardReader } from '../../shared/KPHSMartCardReader';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { timer } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { timer } from "rxjs";
 
-import { QueueItem, QueueGroupPrint } from '../../shared/interface/dataapi';
-import { map } from 'rxjs/operators';
+import { QueueItem, QueueGroupPrint } from "../../shared/interface/dataapi";
+import { map } from "rxjs/operators";
 
 // print queue
 
 // import * as pdfMakeConfig from 'pdfmake/build/pdfmake.js';
 // import * as pdfFontsX from 'pdfmake-unicode/dist/pdfmake-unicode.js';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from '../../shared/pdfmake/vfs_fonts';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from "../../shared/pdfmake/vfs_fonts";
 // import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 (pdfMake as any).fonts = {
   THSarabunNew: {
-    normal: 'THSarabunNew.ttf',
-    bold: 'THSarabunNew Bold.ttf',
+    normal: "THSarabunNew.ttf",
+    bold: "THSarabunNew Bold.ttf",
   },
 };
-import * as JsBarcode from 'JsBarcode';
+import * as JsBarcode from "JsBarcode";
 
 // const pdfMakeX = require('pdfmake/build/pdfmake.js');
 // const pdfFontsX = require('pdfmake-unicode/dist/pdfmake-unicode.js');
 // pdfMakeX.vfs = pdfFontsX.pdfMake.vfs;
 // import * as pdfMake from 'pdfmake/build/pdfmake';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
   @Input() pdf: any;
+  @ViewChild("inputHNSearch", { static: false }) inputElem: ElementRef;
+  // @ViewChild("output", { static: false }) outputElem: HTMLIFrameElement;
 
   public results: QueueItem[]; //
   public queueGroupPrint: QueueGroupPrint;
   public cid: string;
   public cid1: string;
-  inputHNSearchVal: string = '';
-  @ViewChild('inputHNSearch') inputHNSearch: ElementRef;
+  inputHNSearchVal: string = "";
+
   constructor(
     public getDataServiceService: GetDataServiceService,
     // public getKPHSMartCardReader: GetKPHSMartCardReader,
@@ -51,18 +53,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // this.getKPHSMartCardReader();
     this.getDataFromIDCardTimeOut();
+    this.focusSearchTextloop();
   }
+
   private charArray: [number, string][] = [
-    [3592, '0'],
-    [3653, '1'],
-    [47, '2'],
-    [45, '3'],
-    [3616, '4'],
-    [3606, '5'],
-    [3640, '6'],
-    [3638, '7'],
-    [3588, '8'],
-    [3605, '9'],
+    [3592, "0"],
+    [3653, "1"],
+    [47, "2"],
+    [45, "3"],
+    [3616, "4"],
+    [3606, "5"],
+    [3640, "6"],
+    [3638, "7"],
+    [3588, "8"],
+    [3605, "9"],
   ];
   private charMap: Map<number, string> = new Map(this.charArray);
 
@@ -70,19 +74,17 @@ export class HomeComponent implements OnInit {
     // console.log(event);
     console.log(inputHNSearch);
     let data = {
-      id: '1',
+      id: "1",
       hn: inputHNSearch,
     };
     // this.getKPHSMartCardReader.loadData();
-    this.getDataServiceService
-      .postAPI(`createqueue`, data)
-      .subscribe((data: any) => {
-        // this.results = data;
-        // this.queueGroupPrint = data;
-        this.printQueue(data);
-        // alert(data.nameQueue || 'ERROR');
-        console.log(data);
-      });
+    this.getDataServiceService.postAPI(`createqueue`, data).subscribe((data: any) => {
+      // this.results = data;
+      // this.queueGroupPrint = data;
+      this.printQueue(data);
+      // alert(data.nameQueue || 'ERROR');
+      console.log(data);
+    });
     return;
   }
 
@@ -96,14 +98,13 @@ export class HomeComponent implements OnInit {
       // this.inputHNSearchVal.val(
       //   this.inputHNSearchVal.val() + thsi.charMap.get(event.charCode)
       // );
-      this.inputHNSearchVal =
-        this.inputHNSearchVal + this.charMap.get(event.charCode);
+      this.inputHNSearchVal = this.inputHNSearchVal + this.charMap.get(event.charCode);
     }
   }
   printQueue(data: QueueGroupPrint) {
     if (data.hn) {
       this.pdf = {
-        pageSize: 'A4',
+        pageSize: "A4",
         pageMargins: [5, 0, 450, 30],
         content: [
           // {
@@ -123,52 +124,62 @@ export class HomeComponent implements OnInit {
           {
             text: `คิว ` + data.nameQueue,
             fontSize: 40,
-            pageBreak: 'after',
           },
           {
             text: data.Date,
             fontSize: 15,
+            // pageBreak: "after",
           },
         ],
         defaultStyle: {
-          font: 'THSarabunNew',
+          font: "THSarabunNew",
           fontSize: 14,
         },
       };
-      pdfMake.createPdf(this.pdf).print();
+      // pdfMake.createPdf(this.pdf).print();
+
+      const win = window.open("", "tempWinForPdf");
+      pdfMake.createPdf(this.pdf).print({}, win);
+      setTimeout(() => {
+        win.close();
+      }, 3000);
+      // win.close();
+      // pdfMake.createPdf(this.pdf).getDataUrl(
+      //   function (result) {
+      //     // document.getElementById("output").src = result;
+      //     // (<HTMLIFrameElement>document.getElementById("output")).src = result;
+      //     this.outputElem.nativeElement.src = result;
+      //   },
+      //   { autoPrint: true }
+      // );
     }
   }
   textToBase64Barcode(text: string): string {
-    let canvas: HTMLCanvasElement = document.createElement('canvas');
+    let canvas: HTMLCanvasElement = document.createElement("canvas");
     JsBarcode(canvas, text, {
-      format: 'CODE128',
+      format: "CODE128",
       width: 4,
       height: 80,
       displayValue: false,
     });
-    return canvas.toDataURL('image/png');
+    return canvas.toDataURL("image/png");
   }
   getKPHSMartCardReader() {
-    return this.getDataServiceService
-      .getKPHSMartCardReader()
-      .subscribe((data) => {
-        // this.results = data;
-        this.cid = data.CID;
-        // console.log(data);
-        // this.getDataFromIDCard(data.CID);
-      });
+    return this.getDataServiceService.getKPHSMartCardReader().subscribe((data) => {
+      // this.results = data;
+      this.cid = data.CID;
+      // console.log(data);
+      // this.getDataFromIDCard(data.CID);
+    });
   }
   getDataFromIDCardTimeOut() {
     setTimeout(() => {
       this.getKPHSMartCardReader();
       let cid: string = this.cid;
-      console.log(
-        '🚀 ~ file: home.component.ts ~ line 167 ~ HomeComponent ~ setTimeout ~ cid',
-        cid
-      );
+      console.log("🚀 ~ file: home.component.ts ~ line 167 ~ HomeComponent ~ setTimeout ~ cid", cid);
 
       // console.log(55);
-      if (cid != null && cid != 'null' && cid != '') {
+      if (cid != null && cid != "null" && cid != "") {
         if (cid != this.cid1) {
           this.cid1 = cid;
           this.pushCreateQueue(this.cid1);
@@ -181,6 +192,31 @@ export class HomeComponent implements OnInit {
         // console.log('id: NULL');
         this.getDataFromIDCardTimeOut();
       }
+    }, 1000);
+  }
+  clickNumberButton(number) {
+    console.log("🚀 ~ file: home.component.ts ~ line 179 ~ HomeComponent ~ clickNumberButton ~ number", number);
+    var searchText = this.inputHNSearchVal;
+    if (searchText.length < 13) {
+      this.inputHNSearchVal = this.inputHNSearchVal + "" + number;
+    }
+    this.focusSearchText();
+  }
+  clickDeleteButton() {
+    this.inputHNSearchVal = this.inputHNSearchVal.slice(0, -1);
+    this.focusSearchText();
+  }
+  clickClearButton() {
+    this.inputHNSearchVal = "";
+    this.focusSearchText();
+  }
+  focusSearchText() {
+    document.getElementById("searchText").focus();
+  }
+  focusSearchTextloop() {
+    this.focusSearchText();
+    setTimeout(() => {
+      this.focusSearchTextloop();
     }, 1000);
   }
 }
