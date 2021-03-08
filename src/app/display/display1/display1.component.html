@@ -16,22 +16,35 @@
       <div class="row">
         <!-- ตัวใหญ่ -->
         <div class="col-sm-12">
-          <div class="row margin-top">
+          <div
+            class="row margin-top"
+            *ngFor="let result of resultsAudioDisplay"
+          >
             <div class="col-sm-6 offset-1">
               <div class="row">
-                <div class="col-sm-12 bg-primary-rx fontQN-header">
+                <div
+                  class="col-sm-12 bg-{{
+                    result.ColorQueueGroup
+                  }} fontQN-header"
+                >
                   คิวที่เรียกเข้ารับบริการ
                 </div>
                 <div class="col-sm-12 bg-white fontQN">
-                  <P>1-001</P>
+                  <P>{{ result.nameQueue }}</P>
                 </div>
               </div>
             </div>
             <div class="col-sm-2 QN-header2">
               <div class="row">
-                <div class="col-sm-12 bg-primary-rx fontQN-header">จุดที่</div>
+                <div
+                  class="col-sm-12 bg-{{
+                    result.ColorQueueGroup
+                  }} fontQN-header"
+                >
+                  จุดที่
+                </div>
                 <div class="col-sm-12 bg-white fontQN">
-                  <P>1</P>
+                  <P> {{ result.nameServiceChannel }}</P>
                 </div>
               </div>
             </div>
