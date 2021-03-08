@@ -85,6 +85,7 @@ export class HomeComponent implements OnInit {
       // alert(data.nameQueue || 'ERROR');
       console.log(data);
     });
+    this.clickClearButton();
     return;
   }
 
