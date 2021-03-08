@@ -12,13 +12,13 @@
   </div>
   <div class="col-md-1 offset-3 mt-2">
     <mat-form-field>
-      <mat-label>เลือกห้อง </mat-label>
+      <mat-label>ช่องบริการ </mat-label>
       <mat-select [(value)]="selectedValueServiceChannel">
         <mat-option
-          *ngFor="let result of results"
-          [value]="result.idServiceChannel"
+          *ngFor="let resultsServiceChannel of resultsServiceChannels"
+          [value]="resultsServiceChannel.idServiceChannel"
         >
-          {{ result.nameServiceChannel }}
+          {{ resultsServiceChannel.nameServiceChannel }}
         </mat-option>
       </mat-select>
     </mat-form-field>
