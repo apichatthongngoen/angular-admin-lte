@@ -5,7 +5,7 @@
         <p>คิวรอเรียก</p>
       </div>
       <div class="col-sm-12">
-        <app-money-queue-tabel></app-money-queue-tabel>
+        <app-money-queue-tabel [selectedValueServiceChannel]="selectedValueServiceChannel"></app-money-queue-tabel>
       </div>
     </div>
   </div>
@@ -15,7 +15,11 @@
         <p>คิวมีปัญหา</p>
       </div>
       <div class="col-sm-12">
-        <app-money-queue-tabel [color_tb]="color_tb_red_bg" [statusQueue]="problem"></app-money-queue-tabel>
+        <app-money-queue-tabel
+          [color_tb]="color_tb_red_bg"
+          [statusQueue]="problem"
+          [selectedValueServiceChannel]="selectedValueServiceChannel"
+        ></app-money-queue-tabel>
       </div>
     </div>
   </div>
@@ -27,12 +31,17 @@
             <p>คิวเรียบร้อยแล้ว</p>
           </div>
           <div class="col-sm-6">
-            <p>ค้นหา <input type="text"></p>
+            <p>ค้นหา <input type="text" /></p>
           </div>
         </div>
       </div>
       <div class="col-sm-12">
-        <app-money-queue-tabel [color_tb]="color_tb_green_bg" [statusQueue]='success'></app-money-queue-tabel>
+        <app-money-queue-tabel
+          [color_tb]="color_tb_green_bg"
+          [statusQueue]="success"
+          [selectedValueServiceChannel]="selectedValueServiceChannel"
+        ></app-money-queue-tabel>
       </div>
     </div>
   </div>
+</div>

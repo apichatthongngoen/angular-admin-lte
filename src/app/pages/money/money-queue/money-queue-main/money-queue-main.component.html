@@ -6,9 +6,7 @@
 
   </li>
 </ul> -->
-<div *ngFor="let property of results | keyvalue">
-  {{property.key}}: {{property.value.id_queue}}
-</div>
+<div *ngFor="let property of results | keyvalue">{{ property.key }}: {{ property.value.id_queue }}</div>
 
 <app-layout-content-header [name]="name_container_header"></app-layout-content-header>
 <section class="content">
@@ -17,20 +15,22 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-auto">
-            <mat-button-toggle-group #room="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">
-              <mat-button-toggle value="กำลังใช้งานห้อง ก">ห้อง ก
-              </mat-button-toggle>
-              <mat-button-toggle value="กำลังใช้งานห้อง ข">ห้อง ข
-              </mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>
-          <div class="col-sm-6">
-            <h1>{{room.value}}</h1>
+            <mat-form-field>
+              <mat-label>ช่องบริการ </mat-label>
+              <mat-select [(value)]="selectedValueServiceChannel">
+                <mat-option
+                  *ngFor="let resultsServiceChannel of resultsServiceChannels"
+                  [value]="resultsServiceChannel.idServiceChannel"
+                >
+                  {{ resultsServiceChannel.nameServiceChannel }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
       </div>
       <div class="col-sm-12">
-        <app-money-queue-content></app-money-queue-content>
+        <app-money-queue-content [selectedValueServiceChannel]="selectedValueServiceChannel"></app-money-queue-content>
       </div>
     </div>
   </div>
