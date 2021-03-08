@@ -28,6 +28,7 @@ import * as JsBarcode from "JsBarcode";
 // const pdfFontsX = require('pdfmake-unicode/dist/pdfmake-unicode.js');
 // pdfMakeX.vfs = pdfFontsX.pdfMake.vfs;
 // import * as pdfMake from 'pdfmake/build/pdfmake';
+
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -177,8 +178,6 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.getKPHSMartCardReader();
       let cid: string = this.cid;
-      console.log("🚀 ~ file: home.component.ts ~ line 167 ~ HomeComponent ~ setTimeout ~ cid", cid);
-
       // console.log(55);
       if (cid != null && cid != "null" && cid != "") {
         if (cid != this.cid1) {
