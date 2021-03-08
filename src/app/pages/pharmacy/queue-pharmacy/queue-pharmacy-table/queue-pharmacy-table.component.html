@@ -1,44 +1,41 @@
 <div class="example-container mat-elevation-z8">
   <table mat-table [dataSource]="results">
-        <!-- Position Column -->
-        <ng-container matColumnDef="q">
-          <th mat-header-cell *matHeaderCellDef class="{{color_tb}}"> Q </th>
-          <td mat-cell *matCellDef="let element"> {{element.nameQueue}} </td>
-        </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="q">
+      <th mat-header-cell *matHeaderCellDef class="{{ color_tb }}">Q</th>
+      <td mat-cell *matCellDef="let element">{{ element.nameQueue }}</td>
+    </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="qn">
-      <th mat-header-cell *matHeaderCellDef class="{{color_tb}}"> QN. </th>
-      <td mat-cell *matCellDef="let element"> {{element.qnHos}} </td>
+      <th mat-header-cell *matHeaderCellDef class="{{ color_tb }}">QN.</th>
+      <td mat-cell *matCellDef="let element">{{ element.qnHos }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="{{color_tb}}"> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.patName}} </td>
+      <th mat-header-cell *matHeaderCellDef class="{{ color_tb }}">Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.patName }}</td>
     </ng-container>
     <!-- Name Column -->
     <ng-container matColumnDef="time">
-      <th mat-header-cell *matHeaderCellDef class="{{color_tb}}"> เวลารอคอย </th>
-      <td mat-cell *matCellDef="let element"> x </td>
+      <th mat-header-cell *matHeaderCellDef class="{{ color_tb }}">เวลารอคอย</th>
+      <td mat-cell *matCellDef="let element">x</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="statusQueue">
-      <th mat-header-cell *matHeaderCellDef class="{{color_tb}}"> status </th>
+      <th mat-header-cell *matHeaderCellDef class="{{ color_tb }}">status</th>
       <td mat-cell *matCellDef="let element">
         <button type="button" class="btn btn-flat btn-lg">
           <i class="fa fa-exclamation tomato"></i>
         </button>
-
       </td>
     </ng-container>
 
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef class="{{color_tb}}">
-
-      </th>
+      <th mat-header-cell *matHeaderCellDef class="{{ color_tb }}"></th>
       <td mat-cell *matCellDef="let element">
         <button type="button" class="btn btn-flat btn-lg" (click)="pushQueueAnnounce(element)">
           <i class="fa fa-microphone green"></i>
@@ -47,17 +44,29 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></tr>
   </table>
 </div>
 <div class="input-group flex-nowrap">
   <div class="input-group-prepend">
     <span class="input-group-text" id="addon-wrapping">ระบุคิว</span>
   </div>
-  <input type="text" class="form-control" placeholder="Queue" aria-label="Q" aria-describedby="addon-wrapping" #inputpushQueueAnnounce (keyup.enter)="pushQueueAnnounce(inputpushQueueAnnounce.value);inputpushQueueAnnounce.value =''">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Queue"
+    aria-label="Q"
+    aria-describedby="addon-wrapping"
+    #inputpushQueueAnnounce
+    (keyup.enter)="pushQueueAnnounce(inputpushQueueAnnounce.value); inputpushQueueAnnounce.value = ''"
+  />
   <div class="input-group-prepend" id="button-addon3">
-    <button type="button" class="btn btn-success"  (click)="pushQueueAnnounce(inputpushQueueAnnounce.value);inputpushQueueAnnounce.value =''" >เรียกคิว</button>
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="pushQueueAnnounce(inputpushQueueAnnounce.value); inputpushQueueAnnounce.value = ''"
+    >
+      เรียกคิว
+    </button>
   </div>
 </div>
-
-
