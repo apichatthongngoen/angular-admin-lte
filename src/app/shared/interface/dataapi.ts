@@ -55,7 +55,6 @@ export interface ServiceChannel {
 export interface InterfaceScreenCalledQueue {
   idQueue: number;
   nameQueue: string;
-  ColorQueueGroup: string;
   orderQueue: number;
   idServicePoint: number;
   idServicePointSub: string;
@@ -64,6 +63,8 @@ export interface InterfaceScreenCalledQueue {
   vn: string;
   idServiceChannel: number;
   nameServiceChannel: string;
+  nameSpeakServiceChannel: string;
+  ColorQueueGroup: string;
 }
 
 export declare interface QueueGroupPrint {
