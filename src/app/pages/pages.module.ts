@@ -8,6 +8,7 @@ import { MoneyQueueComponent } from "./money-queue/money-queue.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CookieModule } from "ngx-cookie";
 
 // import { MoneyComponent } from './money/money.component';
 // import { LayoutModule } from "../layout/layout.module";
@@ -58,6 +59,7 @@ import { HttpClientModule } from "@angular/common/http";
     MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule,
+    CookieModule,
   ],
   providers: [],
 })
