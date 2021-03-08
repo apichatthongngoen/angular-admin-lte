@@ -1,52 +1,46 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
-import localeEn from '@angular/common/locales/en';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { registerLocaleData } from "@angular/common";
+import localeEn from "@angular/common/locales/en";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PagesModule } from './pages/pages.module';
-import { DisplayModule } from './display/display.module';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
 
-import { BugService } from './shared/bug.service';
-import { GetDataServiceService } from './shared/get-data-service.service';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+// import { BugService } from "./shared/bug.service";
+import { GetDataServiceService } from "./shared/get-data-service.service";
 // import { GetKPHSMartCardReader } from './shared/KPHSMartCardReader';
 
 // routing
-import { LayoutComponent } from './layout/layout/layout.component';
+import { DisplayModule } from "./display/display.module";
+import { PagesModule } from "./pages/pages.module";
+// import { LayoutModule } from "./layout/layout.module";
 
 // template
-import { LayoutFooterComponent } from './layout/layout-footer/layout-footer.component';
-import { LayoutHeaderComponent } from './layout/layout-header/layout-header.component';
-import { LayoutSidebarComponent } from './layout/layout-sidebar/layout-sidebar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Display1Component } from './display/display1/display1.component';
-import { Display2Component } from './display/display2/display2.component';
-import { Display3Component } from './display/display3/display3.component';
-// import { LayoutModule } from './layout/layout.module';
+import { LayoutFooterComponent } from "./layout/layout-footer/layout-footer.component";
+import { LayoutHeaderComponent } from "./layout/layout-header/layout-header.component";
+import { LayoutLoginComponent } from "./layout/layout-login/layout-login.component";
+import { LayoutComponent } from "./layout/layout/layout.component";
+import { LayoutSidebarComponent } from "./layout/layout-sidebar/layout-sidebar.component";
 
-registerLocaleData(localeEn, 'en');
+// import { Display1Component } from "./display/display1/display1.component";
+// import { Display2Component } from "./display/display2/display2.component";
+// import { Display3Component } from "./display/display3/display3.component";
+
+registerLocaleData(localeEn, "en");
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    LayoutFooterComponent,
     LayoutHeaderComponent,
+    LayoutFooterComponent,
+    LayoutComponent,
+    LayoutLoginComponent,
     LayoutSidebarComponent,
-    Display1Component,
-    Display2Component,
-    Display3Component,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PagesModule,
-    BrowserAnimationsModule,
-    DisplayModule,
-    // LayoutModule,
-  ],
-  providers: [BugService, GetDataServiceService],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DisplayModule, PagesModule],
+  providers: [GetDataServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
