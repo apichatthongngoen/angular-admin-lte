@@ -57,16 +57,6 @@ export class Display1Component implements OnInit {
     return val;
   }
 
-  // announceQueuing(val: Observable<number>) {
-  //   val.subscribe((val) => {
-  //     console.log('val');
-  //   });
-  //   // console.log(val);
-  //   // setTimeout(function () {
-  //   //   console.log('setTimeout');
-  //   // }, 10000);
-  //   return 'setTimeout2';
-  // }
   async screenCalledQueuAudio() {
     this.getScreenCalledQueuDisplayAudio();
     let resultsAudio: InterfaceScreenCalledQueue[] = this.resultsAudio;
@@ -77,16 +67,19 @@ export class Display1Component implements OnInit {
       let orderQueue = resultsAudio[0].orderQueue;
       this.resultsAudioDisplay = resultsAudio;
       this.resultsAudio = [];
-      console.log(
-        "🚀 ~ file: display1.component.ts ~ line 78 ~ Display1Component ~ screenCalledQueuAudio ~ nameServiceChannel",
-        nameSpeakServiceChannel
-      );
+      let orderQueueArr: string = orderQueue.toString().padStart(3, "0");
+      let orderQueueString = "";
+      for (let index = 0; index < orderQueueArr.length; index++) {
+        const c = orderQueueArr[index];
+        orderQueueString += c;
+        if (index < orderQueueArr.length - 1) {
+          orderQueueString += " ";
+        }
+      }
       await this.getScreenCalledQueuAudio(
-        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueue + " ที่ช่องบริการ" + nameSpeakServiceChannel
+        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + " ที่ช่องบริการ" + nameSpeakServiceChannel
       );
-
       // await this.timeout(10000);
-
       //   await this.timeout(3000);
       console.log("done!");
       // await this.timeout(1000);

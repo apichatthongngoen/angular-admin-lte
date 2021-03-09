@@ -16,19 +16,10 @@
       <div class="row">
         <!-- ตัวใหญ่ -->
         <div class="col-sm-12">
-          <div
-            class="row margin-top"
-            *ngFor="let result of resultsAudioDisplay"
-          >
+          <div class="row margin-top" *ngFor="let result of resultsAudioDisplay">
             <div class="col-sm-6 offset-1">
               <div class="row">
-                <div
-                  class="col-sm-12 bg-{{
-                    result.ColorQueueGroup
-                  }} fontQN-header"
-                >
-                  คิวที่เรียกเข้ารับบริการ
-                </div>
+                <div class="col-sm-12 bg-{{ result.ColorQueueGroup }} fontQN-header">คิวที่เรียกเข้ารับบริการ</div>
                 <div class="col-sm-12 bg-white fontQN">
                   <P>{{ result.nameQueue }}</P>
                 </div>
@@ -36,13 +27,7 @@
             </div>
             <div class="col-sm-2 QN-header2">
               <div class="row">
-                <div
-                  class="col-sm-12 bg-{{
-                    result.ColorQueueGroup
-                  }} fontQN-header"
-                >
-                  จุดที่
-                </div>
+                <div class="col-sm-12 bg-{{ result.ColorQueueGroup }} fontQN-header">ช่องบริการ</div>
                 <div class="col-sm-12 bg-white fontQN">
                   <P> {{ result.nameServiceChannel }}</P>
                 </div>
@@ -54,10 +39,8 @@
           <div class="row p-1">
             <div class="col-sm-4" *ngFor="let result of results">
               <div class="row p-2">
-                <div
-                  class="col-sm-4 QN-body-left bg-{{ result.ColorQueueGroup }}"
-                >
-                  <p class="QN-body-left-content-h">จุดที่</p>
+                <div class="col-sm-4 QN-body-left bg-{{ result.ColorQueueGroup }}">
+                  <p class="QN-body-left-content-h">ช่องบริการ</p>
                   <p class="QN-body-left-content-b">
                     {{ result.nameServiceChannel }}
                   </p>
