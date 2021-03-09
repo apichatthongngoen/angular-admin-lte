@@ -1,90 +1,157 @@
-<div class="row">
-  <div class="col-sm-12 Header bg-green">
-    <div class="row">
-      <div class="col-sm-12 mt-2 ml-3">
-        <h1>Scan Barcode &nbsp;&nbsp;<i class="bi bi-upc-scan"></i> &nbsp; ลงทะเบียนใบสั่งยา</h1>
-      </div>
+<div class="container-fluid test-font-size">
+  <div class="row Header bg-green">
+    <div class="col-12 pt-2">
+      <h1>Scan Barcode &nbsp;&nbsp;<i class="bi bi-upc-scan"></i> &nbsp; ลงทะเบียนใบสั่งยา</h1>
     </div>
   </div>
-  <div class="col-sm-12">
-    <div class="row mt-2 ml-3 mr-3">
-      <div class="col-sm-12"><h3>HN/หมายเลขประจำตัวประชาชน</h3></div>
-      <div class="col-sm-12">
-        <div class="input-group input-group-lg mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="HN/หมายเลขประจำตัวประชาชน"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            #inputHNSearch
-            name="searchText"
-            id="searchText"
-            (keyup.enter)="pushCreateQueue(inputHNSearch.value, $event)"
-            (keypress)="inputHNSearchkeypress($event)"
-            [(ngModel)]="inputHNSearchVal"
-            autofocus
-          />
-          <div class="input-group-append">
-            <!-- <span class="input-group-text" id="basic-addon2">ลงทะเบียน</span> -->
-            <button type="button" class="btn btn-success" (click)="pushCreateQueue(inputHNSearch.value, $event)">
-              ลงทะเบียน
-            </button>
-          </div>
+
+  <div class="row mt-2">
+    <div class="col-12"><h3>HN/หมายเลขประจำตัวประชาชน</h3></div>
+    <div class="col-12">
+      <div class="input-group input-group-lg mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="HN/หมายเลขประจำตัวประชาชน"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          #inputHNSearch
+          name="searchText"
+          id="searchText"
+          (keyup.enter)="pushCreateQueue(inputHNSearch.value, $event)"
+          (keypress)="inputHNSearchkeypress($event)"
+          [(ngModel)]="inputHNSearchVal"
+          autofocus
+        />
+        <div class="input-group-append">
+          <!-- <span class="input-group-text" id="basic-addon2">ลงทะเบียน</span> -->
+          <button type="button" class="btn btn-success" (click)="pushCreateQueue(inputHNSearch.value, $event)">
+            ลงทะเบียน
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-sm-9"><h1></h1></div>
-          <div class="col-sm-3">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="row">
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(7)">7</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(8)">8</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(9)">9</button>
-                  </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-8"><h1></h1></div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(7)"
+                  >
+                    7
+                  </button>
                 </div>
-                <div class="row">
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(4)">4</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(5)">5</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(6)">6</button>
-                  </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(8)"
+                  >
+                    8
+                  </button>
                 </div>
-                <div class="row">
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(1)">1</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(2)">2</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(3)">3</button>
-                  </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(9)"
+                  >
+                    9
+                  </button>
                 </div>
-                <div class="row">
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickClearButton()">X</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home" (mousedown)="clickNumberButton(0)">0</button>
-                  </div>
-                  <div class="col-sm-auto">
-                    <button type="button" class="btn btn-success btn-home-del" (mousedown)="clickDeleteButton()">
-                      <i class="bi bi-backspace-fill"></i>
-                    </button>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(4)"
+                  >
+                    4
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(5)"
+                  >
+                    5
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(6)"
+                  >
+                    6
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(1)"
+                  >
+                    1
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(2)"
+                  >
+                    2
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(3)"
+                  >
+                    3
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickClearButton()"
+                  >
+                    X
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-3"
+                    (mousedown)="clickNumberButton(0)"
+                  >
+                    0
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-home btn-sm mb-3 pl-3 pr-2"
+                    (mousedown)="clickDeleteButton()"
+                  >
+                    <i class="bi bi-backspace-fill"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -94,4 +161,3 @@
     </div>
   </div>
 </div>
-<iframe id="output" #output style="visibility: hidden" src="" frameborder="0"></iframe>

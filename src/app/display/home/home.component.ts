@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit {
     if (data.hn) {
       this.pdf = {
         pageSize: "A4",
-        pageMargins: [5, 0, 450, 30],
+        pageMargins: [20, 0, 435, 30],
         content: [
           // {
           //   text: ` โรงพยาบาลกำแพงเพชร`,
