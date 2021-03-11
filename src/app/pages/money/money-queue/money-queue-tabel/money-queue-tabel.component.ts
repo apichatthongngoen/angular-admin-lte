@@ -52,7 +52,7 @@ export class MoneyQueueTabelComponent implements OnInit {
     //   this.btnSuccess = true
     // }
 
-    const source = timer(100, 1000);
+    const source = timer(100, 2000);
     const subscribe = source.subscribe((val) => this.loadData(val));
   }
   displayedColumns2 = ["position", "QHOSXP", "hn", "name", "name2", "weight", "times"];

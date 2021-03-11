@@ -31,7 +31,7 @@ export class QueuePharmacyTableComponent implements OnInit {
   ngOnInit(): void {
     console.log("Table: " + this.tabsGroupQueuePharmacy + " statusQueue : " + this.statusQueue);
 
-    const source = timer(100, 50000);
+    const source = timer(100, 3000);
     const subscribe = source.subscribe((val) => this.loadData(val));
   }
   displayedColumns = ["q", "qn", "name", "time", "statusQueue", "select"];
