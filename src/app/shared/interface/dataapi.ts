@@ -92,6 +92,7 @@ export interface InterfaceScreenCalledQueue {
   nameServiceChannel: string;
   nameSpeakServiceChannel: string;
   ColorQueueGroup: string;
+  ColorQueueChannel: string;
 }
 
 export declare interface QueueGroupPrint {
