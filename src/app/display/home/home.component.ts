@@ -135,6 +135,7 @@ export class HomeComponent implements OnInit {
         ],
         defaultStyle: {
           font: "THSarabunNew",
+          bold: true,
           fontSize: 14,
         },
       };
