@@ -39,8 +39,9 @@ export class HomeComponent implements OnInit {
   @ViewChild("inputHNSearch", { static: false }) inputElem: ElementRef;
   // @ViewChild("output", { static: false }) outputElem: HTMLIFrameElement;
 
-  public results: QueueItem[]; //
-  public queueGroupPrint: QueueGroupPrint;
+  public results: QueueItem[];
+  public printQueueData: QueueGroupPrint | undefined;
+  // public queueGroupPrint: QueueGroupPrint;
   public cid: string;
   public cid1: string;
   inputHNSearchVal: string = "";
@@ -103,7 +104,7 @@ export class HomeComponent implements OnInit {
       this.inputHNSearchVal = this.inputHNSearchVal + this.charMap.get(event.charCode);
     }
   }
-  printQueue(data: QueueGroupPrint) {
+  printQueue(data: QueueGroupPrint): void {
     if (data.hn) {
       this.pdf = {
         pageSize: "A4",
@@ -140,12 +141,20 @@ export class HomeComponent implements OnInit {
         },
       };
       // pdfMake.createPdf(this.pdf).print();
+      this.printQueueData = data;
 
-      const win = window.open("", "tempWinForPdf");
-      pdfMake.createPdf(this.pdf).print({}, win);
       setTimeout(() => {
-        win.close();
-      }, 3000);
+        const win = window.open("", "tempWinForPdf");
+        pdfMake.createPdf(this.pdf).print({}, win);
+        setTimeout(() => {
+          win.close();
+        }, 2000);
+      }, 1000);
+
+      setTimeout(() => {
+        this.printQueueData.nameQueue = "";
+        this.printQueueData = undefined;
+      }, 10000);
       // win.close();
       // pdfMake.createPdf(this.pdf).getDataUrl(
       //   function (result) {
@@ -179,24 +188,31 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.getKPHSMartCardReader();
       let cid: string = this.cid;
-      // console.log(55);
       if (cid != null && cid != "null" && cid != "") {
         if (cid != this.cid1) {
           this.cid1 = cid;
-          this.pushCreateQueue(this.cid1);
-          this.getDataFromIDCardTimeOut();
+          // this.inputHNSearchVal = cid;
+          setTimeout(() => {
+            this.pushCreateQueue(this.cid1);
+          }, 1000);
+          setTimeout(() => {
+            this.getDataFromIDCardTimeOut();
+          }, 7000);
         } else {
-          this.getDataFromIDCardTimeOut();
+          setTimeout(() => {
+            this.getDataFromIDCardTimeOut();
+          }, 7000);
         }
       } else {
         this.cid1 = cid;
         // console.log('id: NULL');
-        this.getDataFromIDCardTimeOut();
+        setTimeout(() => {
+          this.getDataFromIDCardTimeOut();
+        }, 1000);
       }
     }, 1000);
   }
   clickNumberButton(number) {
-    console.log("🚀 ~ file: home.component.ts ~ line 179 ~ HomeComponent ~ clickNumberButton ~ number", number);
     var searchText = this.inputHNSearchVal;
     if (searchText.length < 13) {
       this.inputHNSearchVal = this.inputHNSearchVal + "" + number;

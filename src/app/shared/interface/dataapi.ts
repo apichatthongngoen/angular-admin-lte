@@ -96,7 +96,7 @@ export interface InterfaceScreenCalledQueue {
 }
 
 export declare interface QueueGroupPrint {
-  nameQueue: string;
+  nameQueue: string | undefined;
   orderQueue: number;
   idQueueGroup: number;
   idServicePoint: string;
