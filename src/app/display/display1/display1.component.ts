@@ -77,7 +77,7 @@ export class Display1Component implements OnInit {
         }
       }
       await this.getScreenCalledQueuAudio(
-        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + " ที่ช่องบริการ" + nameSpeakServiceChannel
+        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel
       );
       // await this.timeout(10000);
       //   await this.timeout(3000);
