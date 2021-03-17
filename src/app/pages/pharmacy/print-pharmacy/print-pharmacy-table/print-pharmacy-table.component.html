@@ -32,6 +32,13 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="print">
+      <th mat-header-cell *matHeaderCellDef>ปริ้น</th>
+      <td class="table-{{ element.colorQueueGroup }}" mat-cell *matCellDef="let element">
+        <i class="bi bi-printer-fill" (click)="printQueue(element)"></i>
+      </td>
+    </ng-container>
+
     <!-- Name Column -->
     <ng-container matColumnDef="wait">
       <th mat-header-cell *matHeaderCellDef>ระยะเวลารอคอย</th>
