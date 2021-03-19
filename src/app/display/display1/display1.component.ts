@@ -14,6 +14,7 @@ import { environment } from "../../../environments/environment";
 })
 export class Display1Component implements OnInit {
   public results: InterfaceScreenCalledQueue[]; //
+  public resultsarr: any = [[], [], []]; //ชัวคราว
   public resultsAudio: InterfaceScreenCalledQueue[]; //
   public resultsAudioDisplay: InterfaceScreenCalledQueue[];
   public audio: HTMLAudioElement = new Audio();
@@ -40,15 +41,23 @@ export class Display1Component implements OnInit {
     this.getDataServiceService
       .getDisPay(`screencalledqueue?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
       .subscribe((data: any) => {
-        this.results = data;
+        // this.results = data;
         // console.log('loaddata3_' + new Date());
         // console.log(val);
         // // console.log('*********----------*********');
         // console.log(data);
         // // await this.timeout(1000);
-        if (this.results.length > 12) {
-          this.results.splice(12);
-        }
+        // if (data.length > 12) {
+        data.splice(12);
+        // this.results = data.splice(0, 3);
+        this.resultsarr[0] = data.splice(0, 4);
+        this.resultsarr[1] = data.splice(0, 4);
+        this.resultsarr[2] = data.splice(0, 4);
+        console.log(
+          "🚀 ~ file: display1.component.ts ~ line 54 ~ Display1Component ~ .subscribe ~ results",
+          this.resultsarr
+        );
+        // }
         this.loadData(1);
         // console.log(this.announceQueuing());
       });
@@ -94,7 +103,7 @@ export class Display1Component implements OnInit {
       .getDisPay(`screencalledqueueAudio?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
       .subscribe((data: any) => {
         this.resultsAudio = data;
-        console.log("🚀 ~ file: display1.component.ts ~ line 90 ~ Display1Component ~ .subscribe ~ data", data);
+        // console.log("🚀 ~ file: display1.component.ts ~ line 90 ~ Display1Component ~ .subscribe ~ data", data);
         // console.log(this.announceQueuing());
       });
   }
