@@ -55,13 +55,14 @@ export class PrintPharmacyTableComponent implements OnInit {
           //   fontSize: 20,
           // },
           {
-            text: ` HN : ${data.hn}`,
+            text: ` HN : ${data.hn} Qn : ${data.qnHos}`,
             fontSize: 20,
           },
           {
             text: ` Q : ${data.nameQueue}`,
             fontSize: 40,
           },
+          { text: data.ptTypeName, fontSize: 15 },
           // { image: this.textToBase64Barcode(data.hn), width: 100 },
         ],
         defaultStyle: {
