@@ -37,7 +37,7 @@ export class Display1Component implements OnInit {
   async loadData(val: any) {
     // this.results = data1;
     // console.log('loaddata2_' + new Date());
-    await this.timeout(3000);
+    await this.timeout(2000);
     this.getDataServiceService
       .getDisPay(`screencalledqueue?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
       .subscribe((data: any) => {
@@ -94,7 +94,7 @@ export class Display1Component implements OnInit {
       // await this.timeout(1000);
       this.screenCalledQueuAudio();
     } else {
-      await this.timeout(3000);
+      await this.timeout(1000);
       this.screenCalledQueuAudio();
     }
   }
@@ -118,7 +118,7 @@ export class Display1Component implements OnInit {
       });
     } catch (error) {
       return new Promise((resolve) => {
-        setTimeout(resolve, 5000);
+        setTimeout(resolve, 2000);
       });
     }
   }
