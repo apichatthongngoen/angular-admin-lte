@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getKPHSMartCardReader();
-    this.getDataFromIDCardTimeOut();
+    // this.getDataFromIDCardTimeOut(); //อ่านIDCard
     this.focusSearchTextloop();
   }
 
@@ -106,6 +106,10 @@ export class HomeComponent implements OnInit {
   }
   printQueue(data: QueueGroupPrint): void {
     if (data.hn) {
+      let x: string = `-รอเรียกรับยา`;
+      if (data.bypassFinancial == 1) {
+        x = `-รอห้องการเงินเรียก \n -รอเรียกรับยา`;
+      }
       this.pdf = {
         pageSize: "A4",
         pageMargins: [20, 0, 435, 30],
@@ -115,18 +119,22 @@ export class HomeComponent implements OnInit {
           //   fontSize: 20,
           // },
           {
-            text: ` คิว ห้องการเงิน / รับยา`,
+            text: ` คิวรับยา`,
             fontSize: 20,
           },
           // { image: this.textToBase64Barcode(data.hn), width: 100 },
+          {
+            text: `คิว ` + data.nameQueue,
+            fontSize: 40,
+          },
           {
             text: ` HN ` + data.hn + ` อายุ ` + data.age,
             fontSize: 15,
           },
           { text: data.fname + ` ` + data.lname + ` `, fontSize: 15 },
           {
-            text: `คิว ` + data.nameQueue,
-            fontSize: 40,
+            text: x,
+            fontSize: 20,
           },
           {
             text: data.Date,
@@ -148,7 +156,7 @@ export class HomeComponent implements OnInit {
         pdfMake.createPdf(this.pdf).print({}, win);
         setTimeout(() => {
           win.close();
-        }, 2000);
+        }, 10000);
       }, 1000);
 
       setTimeout(() => {
