@@ -106,4 +106,5 @@ export declare interface QueueGroupPrint {
   lname: string;
   age: number;
   Date: string;
+  bypassFinancial: number;
 }
