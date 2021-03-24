@@ -29,7 +29,8 @@ export class QueuePharmacyMainComponent implements OnInit {
   public tabsGroup5 = "5";
   public tabsGroup1 = "1";
   public tabsGroup6 = "6";
-  public tabsGroup7 = "6";
+  public tabsGroup7 = "7";
+  public tabsGroup8 = "8";
 
   loadData() {
     // this.results = data1;
