@@ -156,7 +156,7 @@ export class HomeComponent implements OnInit {
         pdfMake.createPdf(this.pdf).print({}, win);
         setTimeout(() => {
           win.close();
-        }, 10000);
+        }, 2000);
       }, 1000);
 
       setTimeout(() => {

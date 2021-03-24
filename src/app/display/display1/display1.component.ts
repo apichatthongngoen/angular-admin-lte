@@ -53,10 +53,6 @@ export class Display1Component implements OnInit {
         this.resultsarr[0] = data.splice(0, 4);
         this.resultsarr[1] = data.splice(0, 4);
         this.resultsarr[2] = data.splice(0, 4);
-        console.log(
-          "🚀 ~ file: display1.component.ts ~ line 54 ~ Display1Component ~ .subscribe ~ results",
-          this.resultsarr
-        );
         // }
         this.loadData(1);
         // console.log(this.announceQueuing());
@@ -67,7 +63,6 @@ export class Display1Component implements OnInit {
   }
 
   async screenCalledQueuAudio() {
-    this.getScreenCalledQueuDisplayAudio();
     let resultsAudio: InterfaceScreenCalledQueue[] = this.resultsAudio;
     if (resultsAudio && resultsAudio.length > 0) {
       let nameQueue = resultsAudio[0].nameQueue;
@@ -86,16 +81,18 @@ export class Display1Component implements OnInit {
         }
       }
       await this.getScreenCalledQueuAudio(
-        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel
+        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "' 'ที่ช่องบริการ' '" + nameSpeakServiceChannel
       );
       // await this.timeout(10000);
       //   await this.timeout(3000);
-      console.log("done!");
+      console.log(
+        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel!
+      );
       // await this.timeout(1000);
-      this.screenCalledQueuAudio();
+      this.getScreenCalledQueuDisplayAudio();
     } else {
       await this.timeout(1000);
-      this.screenCalledQueuAudio();
+      this.getScreenCalledQueuDisplayAudio();
     }
   }
   getScreenCalledQueuDisplayAudio() {
@@ -103,8 +100,8 @@ export class Display1Component implements OnInit {
       .getDisPay(`screencalledqueueAudio?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
       .subscribe((data: any) => {
         this.resultsAudio = data;
-        // console.log("🚀 ~ file: display1.component.ts ~ line 90 ~ Display1Component ~ .subscribe ~ data", data);
-        // console.log(this.announceQueuing());
+        console.log("🚀 ~ file: display1.component.ts ~ line 103 ~ Display1Component ~ .subscribe ~ data", data);
+        this.screenCalledQueuAudio();
       });
   }
   async getScreenCalledQueuAudio(text: string) {
