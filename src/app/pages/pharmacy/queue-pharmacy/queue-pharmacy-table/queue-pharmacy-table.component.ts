@@ -31,7 +31,7 @@ export class QueuePharmacyTableComponent implements OnInit {
   ngOnInit(): void {
     console.log("Table: " + this.tabsGroupQueuePharmacy + " statusQueue : " + this.statusQueue);
 
-    const source = timer(100, 3000);
+    const source = timer(100, 6000);
     const subscribe = source.subscribe((val) => this.loadData(val));
   }
   displayedColumns = ["q", "qn", "name", "time", "statusQueue", "select"];
@@ -149,7 +149,7 @@ export class QueuePharmacyTableComponent implements OnInit {
       duration: 2000,
     });
   }
-  proBlem(val: QueueItem) {
+  proBlem(val: QueueItem): void {
     // console.log(val)
     // let data = {
     //   "id": 123,
@@ -157,22 +157,19 @@ export class QueuePharmacyTableComponent implements OnInit {
     // }
     val = Object.assign(val, { uiDisplay: "queuepharmacy" });
     console.log(val);
-    return this.getDataServiceService.postDisPay(`servicepoinsub/problem`, val).subscribe((data) => {
+    this.getDataServiceService.postDisPay(`servicepoinsub/problem`, val).subscribe((data) => {
       // this.results = data;
-      console.log(data);
       this.loadData("");
       // console.log(val)
     });
   }
-  successQueue(val: QueueItem) {
+  successQueue(val: QueueItem): void {
     // }
     val = Object.assign(val, { uiDisplay: "queuepharmacy" });
     console.log(val);
-    return this.getDataServiceService.postDisPay(`servicepoinsub/successqueue`, val).subscribe((data) => {
+    this.getDataServiceService.postDisPay(`servicepoinsub/successqueue`, val).subscribe((data) => {
       // this.results = data;
-      console.log(data);
       this.loadData("");
-      // console.log(val)
     });
   }
 }
