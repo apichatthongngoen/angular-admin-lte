@@ -9,21 +9,21 @@
     ></app-queue-pharmacy-table>
   </div>
   <div class="col-sm-4">
-    <h4>รายการเรียบร้อยแล้ว</h4>
-    <app-queue-pharmacy-table
-      [tabsGroupQueuePharmacy]="tabsGroupQueuePharmacyContent"
-      [selectedValueServiceChannelTable]="selectedValueServiceChannelContent"
-      [statusQueue]="problem"
-      [color_tb]="color_tb_green_bg"
-    ></app-queue-pharmacy-table>
-  </div>
-  <div class="col-sm-4">
     <h4>รายการมีปัญหา</h4>
     <app-queue-pharmacy-table
       [tabsGroupQueuePharmacy]="tabsGroupQueuePharmacyContent"
       [selectedValueServiceChannelTable]="selectedValueServiceChannelContent"
-      [statusQueue]="success"
+      [statusQueue]="problem"
       [color_tb]="color_tb_red_bg"
+    ></app-queue-pharmacy-table>
+  </div>
+  <div class="col-sm-4">
+    <h4>รายการเรียบร้อยแล้ว</h4>
+    <app-queue-pharmacy-table
+      [tabsGroupQueuePharmacy]="tabsGroupQueuePharmacyContent"
+      [selectedValueServiceChannelTable]="selectedValueServiceChannelContent"
+      [statusQueue]="success"
+      [color_tb]="color_tb_green_bg"
     ></app-queue-pharmacy-table>
   </div>
 </div>

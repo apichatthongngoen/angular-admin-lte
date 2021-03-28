@@ -31,7 +31,7 @@ export class QueuePharmacyTableComponent implements OnInit {
   ngOnInit(): void {
     console.log("Table: " + this.tabsGroupQueuePharmacy + " statusQueue : " + this.statusQueue);
 
-    const source = timer(100, 3000);
+    const source = timer(100, 6000);
     const subscribe = source.subscribe((val) => this.loadData(val));
   }
   displayedColumns = ["q", "qn", "name", "time", "statusQueue", "select"];
@@ -61,20 +61,12 @@ export class QueuePharmacyTableComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.results = data;
-        console.log("*********----------*********");
-        console.log(this.statusQueue);
-        console.log(val);
+        // console.log("*********----------*********");
+        // console.log(this.statusQueue);
+        // console.log(val);
       });
   }
   pushQueueAnnounce(val?: QueueItem | number | string, results: any = this.results) {
-    // val = Object.assign(val, { "uiDisplay": "money" })
-    // return this.GetDataServiceService.postDisPay(`servicepoinsub/pushqueueannounce`, val)
-    //   .subscribe((data) => {
-    //     // this.results = data;
-    //     console.log(data)
-    //     this.loadData("")
-    //     // console.log(val)
-    //   })
     let selectedValueServiceChannelTable = this.selectedValueServiceChannelTable;
     if (selectedValueServiceChannelTable) {
       try {
@@ -114,10 +106,14 @@ export class QueuePharmacyTableComponent implements OnInit {
                   });
                   // console.log(selectedValueServiceChannelTable);
                   postPushQueueAnnounce(resultsFilter[0], getDataServiceService);
+                  // this.openSnackBarQueueAnnounce();
                 }
               }
             }
           });
+        } else if (typeof val !== "number") {
+          postPushQueueAnnounce(val, getDataServiceService);
+          // this.openSnackBarQueueAnnounce();
         }
       } catch (error) {
         throw error;
@@ -140,18 +136,40 @@ export class QueuePharmacyTableComponent implements OnInit {
       throw new Error("Error");
     }
     function filterIt(arr?: QueueItem, searchKey?: any) {
-      // return arr.filter(function (obj) {
       console.log(arr);
-      //   // return Object.keys(obj).some(function (key) {
-      //   // return obj[key].includes(searchKey);
-      //   //   console.log(obj)
-      //   // })
-      // });
     }
   }
   openSnackBarSelectedValueServiceChannel() {
     this._snackBar.open("กรุณาเลือกช่องบริการ", "OK", {
       duration: 2000,
+    });
+  }
+  openSnackBarQueueAnnounce(): void {
+    this._snackBar.open("ทำการเรียกคิวแล้ว", "OK", {
+      duration: 2000,
+    });
+  }
+  proBlem(val: QueueItem): void {
+    // console.log(val)
+    // let data = {
+    //   "id": 123,
+    //   "id2": 741
+    // }
+    val = Object.assign(val, { uiDisplay: "queuepharmacy" });
+    console.log(val);
+    this.getDataServiceService.postDisPay(`servicepoinsub/problem`, val).subscribe((data) => {
+      // this.results = data;
+      this.loadData("");
+      // console.log(val)
+    });
+  }
+  successQueue(val: QueueItem): void {
+    // }
+    val = Object.assign(val, { uiDisplay: "queuepharmacy" });
+    console.log(val);
+    this.getDataServiceService.postDisPay(`servicepoinsub/successqueue`, val).subscribe((data) => {
+      // this.results = data;
+      this.loadData("");
     });
   }
 }
