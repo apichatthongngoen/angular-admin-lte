@@ -112,6 +112,10 @@ export class QueuePharmacyTableComponent implements OnInit {
             }
           });
         } else if (typeof val !== "number") {
+          val = Object.assign(val, {
+            uiDisplay: "pharmacyqueue",
+            idServiceChannel: selectedValueServiceChannelTable,
+          });
           postPushQueueAnnounce(val, getDataServiceService);
           // this.openSnackBarQueueAnnounce();
         }
