@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit {
           this.missLoading("open");
           setTimeout(() => {
             this.loading("dismiss");
-          }, 4000);
+          }, 3000);
         }
         // alert(data.nameQueue || 'ERROR');
       });
