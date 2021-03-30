@@ -42,6 +42,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { SettingMainComponent } from "./setting/setting-main/setting-main.component";
 import { SettingPharmacyComponent, dialogConfirm } from "./setting/setting-pharmacy/setting-pharmacy.component";
 
+//ng-bootstrap
+import { NgbModalConfig, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -77,6 +79,6 @@ import { SettingPharmacyComponent, dialogConfirm } from "./setting/setting-pharm
     BrowserModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [NgbModalConfig, NgbModal],
 })
 export class PagesModule {}

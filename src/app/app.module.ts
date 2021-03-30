@@ -23,6 +23,7 @@ import { LayoutHeaderComponent } from "./layout/layout-header/layout-header.comp
 import { LayoutLoginComponent } from "./layout/layout-login/layout-login.component";
 import { LayoutComponent } from "./layout/layout/layout.component";
 import { LayoutSidebarComponent } from "./layout/layout-sidebar/layout-sidebar.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // import { Display1Component } from "./display/display1/display1.component";
 // import { Display2Component } from "./display/display2/display2.component";
@@ -39,7 +40,7 @@ registerLocaleData(localeEn, "en");
     LayoutLoginComponent,
     LayoutSidebarComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DisplayModule, PagesModule],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DisplayModule, PagesModule, NgbModule],
   providers: [GetDataServiceService],
   bootstrap: [AppComponent],
 })
