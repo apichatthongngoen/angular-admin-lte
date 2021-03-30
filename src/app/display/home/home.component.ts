@@ -63,11 +63,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getKPHSMartCardReader();
-<<<<<<< HEAD
     // this.getDataFromIDCardTimeOut(); //อ่านIDCard
-=======
-    // this.getDataFromIDCardTimeOut();
->>>>>>> แก้_home
+
     this.focusSearchTextloop();
   }
 
