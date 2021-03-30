@@ -33,7 +33,8 @@ import { MoneyQueueContentComponent } from "./money/money-queue/money-queue-cont
 
 //getdata
 import { HttpClientModule } from "@angular/common/http";
-
+//ng-bootstrap
+import { NgbModalConfig, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -61,6 +62,6 @@ import { HttpClientModule } from "@angular/common/http";
     MatSnackBarModule,
     CookieModule,
   ],
-  providers: [],
+  providers: [NgbModalConfig, NgbModal],
 })
 export class PagesModule {}
