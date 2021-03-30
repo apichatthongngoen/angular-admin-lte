@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit {
         // this.results = data;
         // this.queueGroupPrint = data;
         // this.printQueue(data);
-        if (data) {
+        if (data && !data.error) {
           this.printQueue(data);
         } else {
           this.missLoading("open");
