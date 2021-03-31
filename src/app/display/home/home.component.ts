@@ -98,25 +98,41 @@ export class HomeComponent implements OnInit {
 
     // this.getKPHSMartCardReader.loadData();
     if (!this.loadingStatus) {
-      this.loadingStatus = true;
-      this.getDataServiceService.postAPI(`createqueue`, data).subscribe((data: any) => {
-        console.log(
-          "🚀 ~ file: home.component.ts ~ line 94 ~ HomeComponent ~ this.getDataServiceService.postAPI ~ data",
-          data
+      try {
+        this.loadingStatus = true;
+        this.getDataServiceService.postAPI(`createqueue`, data).subscribe(
+          (data: any) => {
+            console.log(
+              "🚀 ~ file: home.component.ts ~ line 94 ~ HomeComponent ~ this.getDataServiceService.postAPI ~ data",
+              data
+            );
+            // this.results = data;
+            // this.queueGroupPrint = data;
+            // this.printQueue(data);
+            if (data && !data.error) {
+              this.printQueue(data);
+            } else {
+              this.missLoading("open");
+              setTimeout(() => {
+                this.loading("dismiss");
+              }, 3000);
+            }
+            // alert(data.nameQueue || 'ERROR');
+          },
+          (error?: any) => {
+            console.log(
+              "🚀 ~ file: home.component.ts ~ line 94 ~ HomeComponent ~ this.getDataServiceService.postAPI ~ data222",
+              error + "111"
+            );
+            console.log(55);
+          },
+          () => {
+            console.log(55);
+          }
         );
-        // this.results = data;
-        // this.queueGroupPrint = data;
-        // this.printQueue(data);
-        if (data && !data.error) {
-          this.printQueue(data);
-        } else {
-          this.missLoading("open");
-          setTimeout(() => {
-            this.loading("dismiss");
-          }, 3000);
-        }
-        // alert(data.nameQueue || 'ERROR');
-      });
+      } catch (error) {
+        console.log(88877444);
+      }
     }
     return;
   }
@@ -187,7 +203,7 @@ export class HomeComponent implements OnInit {
         setTimeout(() => {
           win.close();
           this.loading("dismiss");
-        }, 3000);
+        }, 2000);
       }, 1000);
 
       setTimeout(() => {

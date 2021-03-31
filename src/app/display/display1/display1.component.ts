@@ -81,7 +81,7 @@ export class Display1Component implements OnInit {
         }
       }
       await this.getScreenCalledQueuAudio(
-        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "' 'ที่ช่องบริการ' '" + nameSpeakServiceChannel
+        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "' 'ช่อง' '" + nameSpeakServiceChannel
       );
       // await this.timeout(10000);
       //   await this.timeout(3000);
@@ -107,7 +107,8 @@ export class Display1Component implements OnInit {
   async getScreenCalledQueuAudio(text: string) {
     try {
       this.audio.src = "http://" + environment.KPHGTTSServerHost + `?text=` + text + "&lang=th";
-      await this.audio.load();
+      this.audio.load();
+      this.audio.playbackRate = 1.5;
       await this.audio.play();
       return new Promise((resolve, reject) => {
         this.audio.onerror = reject;
