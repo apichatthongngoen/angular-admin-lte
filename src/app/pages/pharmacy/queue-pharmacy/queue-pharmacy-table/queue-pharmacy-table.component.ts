@@ -34,7 +34,7 @@ export class QueuePharmacyTableComponent implements OnInit {
     const source = timer(100, 6000);
     const subscribe = source.subscribe((val) => this.loadData(val));
   }
-  displayedColumns = ["q", "qn", "name", "time", "statusQueue", "select"];
+  displayedColumns = ["q", "qn", "name", "time", "statusQueue", "select", "last"];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<QueueItem>(true, []);
 

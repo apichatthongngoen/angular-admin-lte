@@ -33,3 +33,9 @@ h4 {
   background-color: red;
   color: white;
 }
+.table-ellipsis {
+  max-width: 80px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
