@@ -69,6 +69,7 @@ export interface QueueItem {
   notPrintstickerCount?: number;
   cid?: string;
   CID?: string;
+  name_service_channel: string | null;
 }
 
 export interface ServiceChannel {
