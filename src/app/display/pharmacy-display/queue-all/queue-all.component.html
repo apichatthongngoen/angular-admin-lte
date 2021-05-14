@@ -1,0 +1,34 @@
+<!-- <div class="col-12 p-2"><h1>คิวปัจจุบัน</h1></div> -->
+<!-- <div class="d-flex pt-2">
+  <div class="flex-fill text-center mr-1" *ngFor="let item of queueAllModuleGrupTables">
+    <app-queue-all-module-grup-tables></app-queue-all-module-grup-tables>
+  </div>
+</div> -->
+<div class="col-12 display-hv">
+  <div class="col-12 p-2">
+    <div class="row">
+      <div class="col text-center" *ngFor="let item of dataInfoGroupQueue">
+        <app-queue-all-module-grup-tables [queueAllModuleGroupTables]="item"></app-queue-all-module-grup-tables>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 bg-red p-1"><h1>คิวมีปัญหา กรุณาติดต่อที่ช่องบริการ</h1></div>
+  <div class="row pt-2">
+    <div class="mx-2" *ngFor="let item of queueProblem">
+      <div class="card">
+        <div class="card-header queueAllProblem">{{ item.nameQueue }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-12">
+  <div class="row">
+    <div class="col-12 bg-green pt-1">
+      <h1 *ngIf="allQueueDay">
+        จำนวนผู้มารับบริการ {{ allQueueDay.allQueueDay }} คน จำนวนผู้กำลังรอรับบริการ
+        {{ allQueueDay.timeQueueWaitAll }}
+      </h1>
+    </div>
+  </div>
+</div>

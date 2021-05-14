@@ -1,0 +1,16 @@
+<div class="queue-card">
+  <div class="queue-card-item-header bg-{{ queueAllModuleGroupTables.colorQueueGroup }}">
+    คิวปัจจุบันกลุ่ม {{ queueAllModuleGroupTables.nameQueueGroup }}
+  </div>
+  <div class="queue-card-item-body bg-green-100">
+    <h1 class="fontqueue" *ngIf="queueAllModuleGroupTables.queueItem">
+      {{ queueAllModuleGroupTables.queueItem.nameQueue || "-" }}
+    </h1>
+  </div>
+  <div class="queue-card-item-body">
+    <h1>กำลังรอ {{ queueAllModuleGroupTables.queueItem.timeQueueWait || "-" }} คิว</h1>
+  </div>
+  <div class="queue-card-item-body d-none">
+    <h1>รอ {{ queueAllModuleGroupTables.queueItem.timeQueue || "-" }} นาที/คิว</h1>
+  </div>
+</div>
