@@ -55,9 +55,10 @@ export class PrintPharmacyTableComponent implements OnInit {
           //   fontSize: 20,
           // },
           {
-            text: ` HN : ${data.hn} Qn : ${data.qnHos}`,
+            text: ` HN : ${data.hn} \n Qn : ${data.qnHos}`,
             fontSize: 20,
           },
+
           {
             text: ` Q : ${data.nameQueue}`,
             fontSize: 40,

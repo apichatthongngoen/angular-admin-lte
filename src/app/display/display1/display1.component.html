@@ -1,47 +1,73 @@
-<div class="col-sm-12">
-  <div class="row">
-    <!-- ส่วนบน -->
-    <div class="col-sm-12 bg-primary-rx">
-      <div class="row">
-        <div class="col-sm-10">
-          <div class="fontsize60">จุดรับบริการ รับยา / การเงิน</div>
-        </div>
-        <div class="col-sm-2">
-          <h2>time</h2>
-        </div>
-      </div>
-    </div>
-    <!-- กลาง -->
-    <div class="col-sm-12 div-content bg-light-rx">
-      <div class="row">
-        <!-- ตัวใหญ่ -->
-        <div class="col-sm-12">
-          <div class="row margin-top" *ngFor="let result of resultsAudioDisplay">
-            <div class="col-sm-6 offset-1">
-              <div class="row">
-                <div class="col-sm-12 bg-{{ result.ColorQueueChannel }} fontQN-header">คิวที่เรียกเข้ารับบริการ</div>
-                <div class="col-sm-12 bg-white fontQN">
-                  <P>{{ result.nameQueue }}</P>
-                </div>
+<div class="col-sm-12 div-content">
+  <!-- ส่วนบน -->
+  <div class="col-sm-12 bg-primary-rx">
+    <div class="fontQN-headerpage">จุดรับบริการ รับยา</div>
+  </div>
+  <!-- กลาง -->
+  <div class="col-sm-12 bg-light-rx">
+    <div class="row">
+      <!-- ตัวใหญ่ -->
+      <div class="col-sm-10 offset-2">
+        <div class="row margin-top" *ngFor="let result of resultsAudioDisplay">
+          <div class="col-sm-2 QN-header2 px-3">
+            <div class="row">
+              <div class="col-sm-12 bg-{{ result.ColorQueueChannel }} fontQN-header">ช่องบริการ</div>
+              <div class="col-sm-12 bg-white fontQN">
+                <P> {{ result.nameServiceChannel }}</P>
               </div>
             </div>
-            <div class="col-sm-2 QN-header2">
-              <div class="row">
-                <div class="col-sm-12 bg-{{ result.ColorQueueChannel }} fontQN-header">ช่องบริการ</div>
-                <div class="col-sm-12 bg-white fontQN">
-                  <P> {{ result.nameServiceChannel }}</P>
-                </div>
+          </div>
+          <div class="col-sm-6 px-3">
+            <div class="row">
+              <div class="col-sm-12 bg-{{ result.ColorQueueChannel }} fontQN-header">คิวที่เรียกเข้ารับบริการ</div>
+              <div class="col-sm-12 bg-white fontQN">
+                <P>{{ result.nameQueue }}</P>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-12">
-          <div class="row p-1">
-            <div class="col-sm-4" *ngFor="let result of results">
+      </div>
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="col-sm-12" *ngFor="let result of resultsarr[0]">
               <div class="row p-2">
                 <div class="col-sm-4 QN-body-left bg-{{ result.ColorQueueChannel }}">
                   <p class="QN-body-left-content-h">ช่องบริการ</p>
                   <p class="QN-body-left-content-b">
+                    <i class="bi bi-chevron-double-down"></i>
+                    {{ result.nameServiceChannel }}
+                  </p>
+                </div>
+                <div class="col-sm-8 QN-body-right bg-white">
+                  <p class="QN-body-right-content">{{ result.nameQueue }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="col-sm-12" *ngFor="let result of resultsarr[1]">
+              <div class="row p-2">
+                <div class="col-sm-4 QN-body-left bg-{{ result.ColorQueueChannel }}">
+                  <p class="QN-body-left-content-h">ช่องบริการ</p>
+                  <p class="QN-body-left-content-b">
+                    <i class="bi bi-chevron-down"></i>
+                    {{ result.nameServiceChannel }}
+                  </p>
+                </div>
+                <div class="col-sm-8 QN-body-right bg-white">
+                  <p class="QN-body-right-content">{{ result.nameQueue }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="col-sm-12" *ngFor="let result of resultsarr[2]">
+              <div class="row p-2">
+                <div class="col-sm-4 QN-body-left bg-{{ result.ColorQueueChannel }}">
+                  <p class="QN-body-left-content-h">ช่องบริการ</p>
+                  <p class="QN-body-left-content-b">
+                    <i class="bi bi-chevron-bar-down"></i>
                     {{ result.nameServiceChannel }}
                   </p>
                 </div>

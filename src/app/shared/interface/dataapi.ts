@@ -69,6 +69,7 @@ export interface QueueItem {
   notPrintstickerCount?: number;
   cid?: string;
   CID?: string;
+  name_service_channel: string | null;
 }
 
 export interface ServiceChannel {
@@ -106,4 +107,5 @@ export declare interface QueueGroupPrint {
   lname: string;
   age: number;
   Date: string;
+  bypassFinancial: number;
 }

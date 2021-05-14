@@ -14,6 +14,7 @@ import { environment } from "../../../environments/environment";
 })
 export class Display1Component implements OnInit {
   public results: InterfaceScreenCalledQueue[]; //
+  public resultsarr: any = [[], [], []]; //ชัวคราว
   public resultsAudio: InterfaceScreenCalledQueue[]; //
   public resultsAudioDisplay: InterfaceScreenCalledQueue[];
   public audio: HTMLAudioElement = new Audio();
@@ -21,44 +22,24 @@ export class Display1Component implements OnInit {
 
   ngOnInit() {
     this.screenCalledQueuAudio();
-    // this.announceQueuing(source);
-
-    // this.results.su
-    // console.log(subscribe);
-    // const source = timer(100, 2000);
-    // // console.log(source);.
-    // const subscribe = await source.subscribe(async (val) => {
-    //   console.log('loaddata_' + new Date());
     this.loadData(1);
-    // });
   }
 
   async loadData(val: any) {
-    // this.results = data1;
-    // console.log('loaddata2_' + new Date());
     await this.timeout(2000);
     this.getDataServiceService
-      .getDisPay(`screencalledqueue?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
+      .getDisPay(`screencalledqueue?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1&idServicePointSub=3`)
       .subscribe((data: any) => {
-        this.results = data;
-        // console.log('loaddata3_' + new Date());
-        // console.log(val);
-        // // console.log('*********----------*********');
-        // console.log(data);
-        // // await this.timeout(1000);
-        if (this.results.length > 12) {
-          this.results.splice(12);
-        }
+        data.splice(12);
+        this.resultsarr[0] = data.splice(0, 4);
+        this.resultsarr[1] = data.splice(0, 4);
+        this.resultsarr[2] = data.splice(0, 4);
         this.loadData(1);
-        // console.log(this.announceQueuing());
       });
-
-    // await setTimeout(async () => {}, 50000);
     return val;
   }
 
   async screenCalledQueuAudio() {
-    this.getScreenCalledQueuDisplayAudio();
     let resultsAudio: InterfaceScreenCalledQueue[] = this.resultsAudio;
     if (resultsAudio && resultsAudio.length > 0) {
       let nameQueue = resultsAudio[0].nameQueue;
@@ -77,31 +58,31 @@ export class Display1Component implements OnInit {
         }
       }
       await this.getScreenCalledQueuAudio(
-        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel
+        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "' 'ช่อง' '" + nameSpeakServiceChannel
       );
-      // await this.timeout(10000);
-      //   await this.timeout(3000);
-      console.log("done!");
-      // await this.timeout(1000);
-      this.screenCalledQueuAudio();
+      console.log(
+        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel!
+      );
+      this.getScreenCalledQueuDisplayAudio();
     } else {
       await this.timeout(1000);
-      this.screenCalledQueuAudio();
+      this.getScreenCalledQueuDisplayAudio();
     }
   }
   getScreenCalledQueuDisplayAudio() {
     this.getDataServiceService
-      .getDisPay(`screencalledqueueAudio?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
+      .getDisPay(`screencalledqueueAudio?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1&idServicePointSub=3`)
       .subscribe((data: any) => {
         this.resultsAudio = data;
-        console.log("🚀 ~ file: display1.component.ts ~ line 90 ~ Display1Component ~ .subscribe ~ data", data);
-        // console.log(this.announceQueuing());
+        console.log("🚀 ~ file: display1.component.ts ~ line 103 ~ Display1Component ~ .subscribe ~ data", data);
+        this.screenCalledQueuAudio();
       });
   }
   async getScreenCalledQueuAudio(text: string) {
     try {
       this.audio.src = "http://" + environment.KPHGTTSServerHost + `?text=` + text + "&lang=th";
-      await this.audio.load();
+      this.audio.load();
+      this.audio.playbackRate = 1.5;
       await this.audio.play();
       return new Promise((resolve, reject) => {
         this.audio.onerror = reject;

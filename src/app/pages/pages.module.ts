@@ -17,6 +17,12 @@ import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatSelectModule } from "@angular/material/select";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { FormsModule } from "@angular/forms";
+import { MatDialogModule } from "@angular/material/dialog";
+
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // money-queue
 import { PrintPharmacyMinComponent } from "./pharmacy/print-pharmacy/print-pharmacy-min/print-pharmacy-min.component";
 import { PrintPharmacyTableComponent } from "./pharmacy/print-pharmacy/print-pharmacy-table/print-pharmacy-table.component";
@@ -33,7 +39,11 @@ import { MoneyQueueContentComponent } from "./money/money-queue/money-queue-cont
 
 //getdata
 import { HttpClientModule } from "@angular/common/http";
+import { SettingMainComponent } from "./setting/setting-main/setting-main.component";
+import { SettingPharmacyComponent, dialogConfirm } from "./setting/setting-pharmacy/setting-pharmacy.component";
 
+//ng-bootstrap
+import { NgbModalConfig, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -47,6 +57,9 @@ import { HttpClientModule } from "@angular/common/http";
     MoneyQueueMainComponent,
     MoneyQueueContentComponent,
     LayoutContentHeaderComponent,
+    SettingMainComponent,
+    SettingPharmacyComponent,
+    dialogConfirm,
   ],
   imports: [
     CommonModule,
@@ -60,7 +73,12 @@ import { HttpClientModule } from "@angular/common/http";
     MatSelectModule,
     MatSnackBarModule,
     CookieModule,
+    MatSlideToggleModule,
+    FormsModule,
+    MatDialogModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [NgbModalConfig, NgbModal],
 })
 export class PagesModule {}
