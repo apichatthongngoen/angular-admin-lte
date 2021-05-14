@@ -22,43 +22,20 @@ export class Display1Component implements OnInit {
 
   ngOnInit() {
     this.screenCalledQueuAudio();
-    // this.announceQueuing(source);
-
-    // this.results.su
-    // console.log(subscribe);
-    // const source = timer(100, 2000);
-    // // console.log(source);.
-    // const subscribe = await source.subscribe(async (val) => {
-    //   console.log('loaddata_' + new Date());
     this.loadData(1);
-    // });
   }
 
   async loadData(val: any) {
-    // this.results = data1;
-    // console.log('loaddata2_' + new Date());
     await this.timeout(2000);
     this.getDataServiceService
-      .getDisPay(`screencalledqueue?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
+      .getDisPay(`screencalledqueue?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1&idServicePointSub=3`)
       .subscribe((data: any) => {
-        // this.results = data;
-        // console.log('loaddata3_' + new Date());
-        // console.log(val);
-        // // console.log('*********----------*********');
-        // console.log(data);
-        // // await this.timeout(1000);
-        // if (data.length > 12) {
         data.splice(12);
-        // this.results = data.splice(0, 3);
         this.resultsarr[0] = data.splice(0, 4);
         this.resultsarr[1] = data.splice(0, 4);
         this.resultsarr[2] = data.splice(0, 4);
-        // }
         this.loadData(1);
-        // console.log(this.announceQueuing());
       });
-
-    // await setTimeout(async () => {}, 50000);
     return val;
   }
 
@@ -83,12 +60,9 @@ export class Display1Component implements OnInit {
       await this.getScreenCalledQueuAudio(
         "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "' 'ช่อง' '" + nameSpeakServiceChannel
       );
-      // await this.timeout(10000);
-      //   await this.timeout(3000);
       console.log(
         "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel!
       );
-      // await this.timeout(1000);
       this.getScreenCalledQueuDisplayAudio();
     } else {
       await this.timeout(1000);
@@ -97,7 +71,7 @@ export class Display1Component implements OnInit {
   }
   getScreenCalledQueuDisplayAudio() {
     this.getDataServiceService
-      .getDisPay(`screencalledqueueAudio?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1`)
+      .getDisPay(`screencalledqueueAudio?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1&idServicePointSub=3`)
       .subscribe((data: any) => {
         this.resultsAudio = data;
         console.log("🚀 ~ file: display1.component.ts ~ line 103 ~ Display1Component ~ .subscribe ~ data", data);

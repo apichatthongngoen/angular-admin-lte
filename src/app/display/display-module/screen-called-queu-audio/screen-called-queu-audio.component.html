@@ -1,0 +1,20 @@
+<div class="col-sm-12">
+  <div class="row margin-top" *ngFor="let result of resultsAudioDisplay">
+    <div class="col-sm-2 QN-header2 px-3">
+      <div class="row">
+        <div class="col-sm-12 bg-{{ result.ColorQueueChannel }} fontQN-header">ช่องบริการ</div>
+        <div class="col-sm-12 bg-white fontQN">
+          <P> {{ result.nameServiceChannel }}</P>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 px-3">
+      <div class="row">
+        <div class="col-sm-12 bg-{{ result.ColorQueueChannel }} fontQN-header">คิวที่เรียกเข้ารับบริการ</div>
+        <div class="col-sm-12 bg-white fontQN">
+          <P>{{ result.nameQueue }}</P>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
