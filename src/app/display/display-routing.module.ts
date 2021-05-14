@@ -8,7 +8,7 @@ import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   { path: "display", component: Display1Component },
-  { path: "pharmacydisplay", redirectTo: "display", pathMatch: "full" },
+  // { path: "pharmacydisplay", redirectTo: "display", pathMatch: "full" },
   { path: "display2", component: Display2Component },
   { path: "display3", component: Display3Component },
   { path: "home", component: HomeComponent },
