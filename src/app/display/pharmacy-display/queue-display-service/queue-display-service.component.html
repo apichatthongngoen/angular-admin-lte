@@ -1,0 +1,21 @@
+<app-display-head
+  [nameDisplayHeading]="displayHeading.nameThDisplay"
+  [classHeading]="displayHeading.classHeading"
+></app-display-head>
+
+<div class="col-12">
+  <div class="row">
+    <div class="col-9">
+      <div class="col-12 font-size-service p-2">คิวที่ถูกเรียกเข้ารับบริการ</div>
+      <div>
+        <app-channel-display-module></app-channel-display-module>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="col-12 font-size-service p-2">คิวที่ถูกเรียกเข้ารับบริการ</div>
+      <div>
+        <app-channel-display-module [classQueueSmall]="classQueueSmall"></app-channel-display-module>
+      </div>
+    </div>
+  </div>
+</div>

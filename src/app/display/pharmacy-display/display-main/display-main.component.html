@@ -25,19 +25,26 @@
       </li>
       <li class="col mb-4" data-tags="alarm clock" data-categories="devices">
         <a class="d-block text-dark text-decoration-none" [routerLink]="['/pharmacydisplay/pagequeueall']">
-          <!-- <a
-          class="d-block text-dark text-decoration-none"
-          (click)="setMenu('queueall')"
-          [routerLink]="['/pagequeueall']"
-        > -->
           <div class="p-3 py-4 mb-2 bg-light text-center rounded">
             <i class="bi bi-display-fill icon-size"></i>
           </div>
           <div class="name text-muted text-decoration-none text-center pt-1">หน้าจอแสดงคิวรวม 2</div>
         </a>
       </li>
+      <li class="col mb-4" data-tags="alarm clock" data-categories="devices" *ngFor="let item of displayService">
+        <!-- <a class="d-block text-dark text-decoration-none" [routerLink]="['/pharmacydisplay/QueueDisplayService']"> -->
+        <a class="d-block text-dark text-decoration-none" (click)="setMenu(item.idDisplay)">
+          <div class="p-3 py-4 mb-2 bg-light text-center rounded">
+            <i class="bi bi-display-fill icon-size red"></i>
+          </div>
+          <div class="name text-muted text-decoration-none text-center pt-1">
+            หน้าจอแสดงคิว {{ item.nameThDisplay }}
+          </div>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
-
-<app-queue-all *ngIf="pageQueueAll"></app-queue-all>
+<div *ngFor="let item of displayService">
+  <app-queue-display-service *ngIf="item.displayServiceItemShow" [displayHeading]="item"></app-queue-display-service>
+</div>

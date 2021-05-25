@@ -4,6 +4,7 @@ import { Display1Component } from "../display1/display1.component";
 
 import { DisplayMainComponent } from "./display-main/display-main.component";
 import { QueueAllComponent } from "./queue-all/queue-all.component";
+import { QueueDisplayServiceComponent } from "./queue-display-service/queue-display-service.component";
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: "", component: DisplayMainComponent },
       { path: "pagequeueall", component: QueueAllComponent },
       { path: "pagequeue", component: Display1Component },
+      { path: "QueueDisplayService", component: QueueDisplayServiceComponent },
     ],
   },
 ];
