@@ -42,7 +42,7 @@ export class Display1Component implements OnInit {
   async screenCalledQueuAudio() {
     let resultsAudio: InterfaceScreenCalledQueue[] = this.resultsAudio;
     if (resultsAudio && resultsAudio.length > 0) {
-      let nameQueue = resultsAudio[0].nameQueue;
+      let nameQueueGroup = resultsAudio[0].nameQueueGroup;
       let nameSpeakServiceChannel = resultsAudio[0].nameSpeakServiceChannel;
       let idQueueGroup = resultsAudio[0].idQueueGroup;
       let orderQueue = resultsAudio[0].orderQueue;
@@ -58,10 +58,10 @@ export class Display1Component implements OnInit {
         }
       }
       await this.getScreenCalledQueuAudio(
-        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "' 'ช่อง' '" + nameSpeakServiceChannel
+        "ขอเชิญคิว " + nameQueueGroup + " ' ' " + orderQueueString + "' 'ช่อง' '" + nameSpeakServiceChannel
       );
       console.log(
-        "ขอเชิญคิว " + idQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel!
+        "ขอเชิญคิว " + nameQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel!
       );
       this.getScreenCalledQueuDisplayAudio();
     } else {

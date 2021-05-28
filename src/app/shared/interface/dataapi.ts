@@ -83,6 +83,7 @@ export interface ServiceChannel {
 export interface InterfaceScreenCalledQueue {
   idQueue: number;
   nameQueue: string;
+  nameQueueGroup?: string;
   orderQueue: number;
   idServicePoint: number;
   idServicePointSub: string;
