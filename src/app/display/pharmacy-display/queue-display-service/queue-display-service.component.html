@@ -1,20 +1,28 @@
 <app-display-head
+  *ngIf="displayHeading"
   [nameDisplayHeading]="displayHeading.nameThDisplay"
   [classHeading]="displayHeading.classHeading"
 ></app-display-head>
 
-<div class="col-12">
+<div class="col-12" *ngIf="queueDisplayServiceList">
   <div class="row">
-    <div class="col-9">
+    <div class="col-8">
       <div class="col-12 font-size-service p-2">คิวที่ถูกเรียกเข้ารับบริการ</div>
       <div>
-        <app-channel-display-module></app-channel-display-module>
+        <app-channel-display-module
+          [queueDisplayServiceitem]="queueDisplayServiceList.serviceNow"
+          [displayHeading]="displayHeading"
+        ></app-channel-display-module>
       </div>
     </div>
-    <div class="col-3">
-      <div class="col-12 font-size-service p-2">คิวที่ถูกเรียกเข้ารับบริการ</div>
+    <div class="col-4">
+      <div class="col-12 font-size-service p-2">ติดต่อเจ้าหน้าที่</div>
       <div>
-        <app-channel-display-module [classQueueSmall]="classQueueSmall"></app-channel-display-module>
+        <app-channel-display-module
+          [queueDisplayServiceitem]="queueDisplayServiceList.serviceNowProblem"
+          [displayHeading]="displayHeading"
+          [classQueueSmall]="classQueueSmall"
+        ></app-channel-display-module>
       </div>
     </div>
   </div>

@@ -1,15 +1,15 @@
 <div class="col-sm-12">
-  <div class="col-sm-12" *ngFor="let result of resultsarr">
+  <div class="col-sm-12" *ngFor="let item of queueDisplayServiceitem">
     <div class="row p-2 {{ classQueueSmall || '' }}">
-      <div class="col-sm-4 QN-body-left bg-{{ result.ColorQueueChannel }}">
+      <div class="col-sm-4 QN-body-left bg-{{ item.colorQueueGroup }}">
         <p class="QN-body-left-content-h">ช่องบริการ</p>
         <p class="QN-body-left-content-b">
           <!-- <i class="bi bi-chevron-double-down"></i> -->
-          {{ result.nameServiceChannel }}
+          {{ displayHeading.nameServiceChannel }}
         </p>
       </div>
       <div class="col-sm-8 QN-body-right bg-white">
-        <p class="QN-body-right-content">{{ result.nameQueue }}</p>
+        <p class="QN-body-right-content">{{ item.nameQueue }}</p>
       </div>
     </div>
   </div>

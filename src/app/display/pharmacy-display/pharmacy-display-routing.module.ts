@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: "", component: DisplayMainComponent },
       { path: "pagequeueall", component: QueueAllComponent },
       { path: "pagequeue", component: Display1Component },
-      { path: "QueueDisplayService", component: QueueDisplayServiceComponent },
+      { path: "QueueDisplayService/:id", component: QueueDisplayServiceComponent },
     ],
   },
 ];
