@@ -22,21 +22,26 @@ export class Display1Component implements OnInit {
 
   ngOnInit() {
     this.screenCalledQueuAudio();
-    this.loadData(1);
+    this.loadData();
   }
 
-  async loadData(val: any) {
+  async loadData() {
     await this.timeout(2000);
     this.getDataServiceService
       .getDisPay(`screencalledqueue?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1&idServicePointSub=3`)
-      .subscribe((data: any) => {
-        data.splice(12);
-        this.resultsarr[0] = data.splice(0, 4);
-        this.resultsarr[1] = data.splice(0, 4);
-        this.resultsarr[2] = data.splice(0, 4);
-        this.loadData(1);
-      });
-    return val;
+      .subscribe(
+        (data: any) => {
+          data.splice(12);
+          this.resultsarr[0] = data.splice(0, 4);
+          this.resultsarr[1] = data.splice(0, 4);
+          this.resultsarr[2] = data.splice(0, 4);
+          this.loadData();
+        },
+        (err: any) => {
+          this.loadData();
+        }
+      );
+    // return val;
   }
 
   async screenCalledQueuAudio() {
@@ -57,12 +62,19 @@ export class Display1Component implements OnInit {
           orderQueueString += " ";
         }
       }
-      await this.getScreenCalledQueuAudio(
+      let x = await this.getScreenCalledQueuAudio(
         "ขอเชิญคิว " + nameQueueGroup + " ' ' " + orderQueueString + "' 'ช่อง' '" + nameSpeakServiceChannel
       );
-      console.log(
-        "ขอเชิญคิว " + nameQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel!
-      );
+      if (x == undefined) {
+        await this.timeout(1000);
+        await this.getScreenCalledQueuAudio(
+          "ขอเชิญคิว " + nameQueueGroup + " ' ' " + orderQueueString + "' 'ช่อง' '" + nameSpeakServiceChannel
+        );
+      }
+      console.log("🚀 ~ file: display1.component.ts ~ line 68 ~ Display1Component ~ screenCalledQueuAudio ~ x", x);
+      // console.log(
+      //   "ขอเชิญคิว " + nameQueueGroup + " ' ' " + orderQueueString + "  ที่ช่องบริการ" + nameSpeakServiceChannel!
+      // );
       this.getScreenCalledQueuDisplayAudio();
     } else {
       await this.timeout(1000);
@@ -72,17 +84,23 @@ export class Display1Component implements OnInit {
   getScreenCalledQueuDisplayAudio() {
     this.getDataServiceService
       .getDisPay(`screencalledqueueAudio?uiDisplay=PharmacyScreenCalledQueue&idServicePoint=1&idServicePointSub=3`)
-      .subscribe((data: any) => {
-        this.resultsAudio = data;
-        console.log("🚀 ~ file: display1.component.ts ~ line 103 ~ Display1Component ~ .subscribe ~ data", data);
-        this.screenCalledQueuAudio();
-      });
+      .subscribe(
+        (data: any) => {
+          this.resultsAudio = data;
+          // console.log("🚀 ~ file: display1.component.ts ~ line 103 ~ Display1Component ~ .subscribe ~ data", data);
+          this.screenCalledQueuAudio();
+        },
+        (err: any) => {
+          this.screenCalledQueuAudio();
+        }
+      );
   }
   async getScreenCalledQueuAudio(text: string) {
     try {
+      console.log("🚀 เรียกคิว ");
       this.audio.src = "http://" + environment.KPHGTTSServerHost + `?text=` + text + "&lang=th";
       this.audio.load();
-      this.audio.playbackRate = 1.5;
+      this.audio.playbackRate = 1;
       await this.audio.play();
       return new Promise((resolve, reject) => {
         this.audio.onerror = reject;

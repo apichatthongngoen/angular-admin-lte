@@ -18,20 +18,27 @@ export class PrintPharmacyTableComponent implements OnInit {
   constructor(public GetDataServiceService: GetDataServiceService, private http: HttpClient) {}
 
   ngOnInit(): void {
-    const source = timer(100, 3000);
-    const subscribe = source.subscribe((val) => this.loadData(val));
+    // const source = timer(100, 3000);
+    // const subscribe = source.subscribe((val) => this.loadData(val));
+    this.loadData();
   }
   displayedColumns = ["position", "qn", "hn", "name", "status", "print", "wait"];
 
-  loadData(val: any) {
+  async loadData() {
     console.log(this.value);
     return this.GetDataServiceService.getDisPay(
       `servicepoinsub?idServicePoint=1&idServicePointSub=2&statusQueue=${this.value}&uiDisplay=pharmacy-print`
-    ).subscribe((data) => {
-      this.results = data;
-      console.log(data);
-      console.log(val);
-    });
+    ).subscribe(
+      async (data) => {
+        this.results = data;
+        console.log(data);
+        await this.timeout(3000);
+        this.loadData();
+      },
+      (err) => {
+        this.loadData();
+      }
+    );
   }
   getFinancialStatusName(value: number): string {
     if (value == 1) {
@@ -58,7 +65,10 @@ export class PrintPharmacyTableComponent implements OnInit {
             text: ` HN : ${data.hn} \n Qn : ${data.qnHos}`,
             fontSize: 20,
           },
-
+          {
+            text: ` ชื่อ : ${data.patName}`,
+            fontSize: 20,
+          },
           {
             text: ` Q : ${data.nameQueue}`,
             fontSize: 40,
@@ -91,5 +101,10 @@ export class PrintPharmacyTableComponent implements OnInit {
       //   { autoPrint: true }
       // );
     }
+  }
+  timeout(ms: number) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
   }
 }
