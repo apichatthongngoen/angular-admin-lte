@@ -14,7 +14,8 @@
   // background-color: #ffffff;
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.1rem;
+  border-radius: 0.3rem;
+  margin: 4px;
 }
 .queue-card-item-header {
   position: relative;
@@ -23,18 +24,33 @@
   // background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 1rem 1rem 0rem 0rem;
-  font-size: 1.5rem !important;
+  font-size: 2rem !important;
+  // margin: 4px;
 }
 .queue-card-item-body {
   position: relative;
   display: block;
-  padding: 0.7rem 0.3rem;
+  // padding: 0.7rem 0.3rem;
   // background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-
+  border: 2px solid rgba(0, 0, 0, 1);
   font-size: 1.2rem !important;
 }
+.queue-card-item-body-queue {
+  position: relative;
+  display: block;
+  padding: 0.7rem 0.3rem;
+  // background-color: #ffffff;
+  border: 2px solid rgba(0, 0, 0, 1);
+  font-size: 1.2rem !important;
+  margin-top: -1px;
+}
 .fontqueue {
-  padding: 0.8rem 0.1rem;
-  font-size: 4rem !important;
+  padding: 3rem 0.7rem;
+  font-size: 9rem !important;
+  margin: 29px;
+}
+.fontqueuetime {
+  // padding: 1.3rem 0.7rem;
+  font-size: 2rem !important;
+  margin: 4px;
 }

@@ -40,7 +40,9 @@ export class QueueDisplayServiceComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.getDataServiceService
         .getDisPay(
-          `getqueuedisplayservice?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&idServiceChannel=${this.displayHeading.idServiceChannel}`
+          `getqueuedisplayservice?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3
+          &idServiceChannel=${this.displayHeading.idServiceChannel}
+          &idDisplay=${this.displayHeading.idDisplay}`
         )
         .subscribe(
           (data: any) => {
