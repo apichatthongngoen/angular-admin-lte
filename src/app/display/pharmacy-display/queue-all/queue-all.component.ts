@@ -23,6 +23,7 @@ export class QueueAllComponent implements OnInit {
     this.loadData();
   }
   async loadData() {
+    await this.timeout(1000);
     if (this.dataInfoGroupQueue) {
       await this.getQueueItemLast();
       this.getQueueproblem();
@@ -37,9 +38,14 @@ export class QueueAllComponent implements OnInit {
   private getDataInfoGroupQueue() {
     return this.getDataServiceService
       .getDisPay(`countqueuegroup?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3`)
-      .subscribe((data: any) => {
-        this.dataInfoGroupQueue = data;
-      });
+      .subscribe(
+        (data: any) => {
+          this.dataInfoGroupQueue = data;
+        },
+        (error: any) => {
+          this.loadData();
+        }
+      );
   }
   private async getQueueItemLast(): Promise<void> {
     return new Promise<void>((resolve, reject) =>
@@ -65,7 +71,7 @@ export class QueueAllComponent implements OnInit {
             resolve();
           },
           (err) => {
-            reject();
+            this.loadData();
           }
         )
     );
@@ -73,17 +79,27 @@ export class QueueAllComponent implements OnInit {
   private async getQueueproblem() {
     return this.getDataServiceService
       .getDisPay(`queueitembystatusqueue?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&statusQueue=2`)
-      .subscribe((queueproblem: any) => {
-        this.queueProblem = queueproblem;
-      });
+      .subscribe(
+        (queueproblem: any) => {
+          this.queueProblem = queueproblem;
+        },
+        (error: any) => {
+          this.loadData();
+        }
+      );
   }
   private async getAllQueueDay() {
     return this.getDataServiceService
       .getDisPay(`getallqueueday?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&statusQueue=2`)
-      .subscribe((data: any) => {
-        console.log("🚀 ~ file: queue-all.component.ts ~ line 84 ~ QueueAllComponent ~ .subscribe ~ data", data);
-        this.allQueueDay = data;
-      });
+      .subscribe(
+        (data: any) => {
+          console.log("🚀 ~ file: queue-all.component.ts ~ line 84 ~ QueueAllComponent ~ .subscribe ~ data", data);
+          this.allQueueDay = data;
+        },
+        (error: any) => {
+          this.loadData();
+        }
+      );
   }
   timeout(ms: number) {
     return new Promise((resolve) => {

@@ -8,27 +8,29 @@
 //  $rx_grren_6: #1f7904;
 //  $rx_grren_7: #31ae4d;
 
-
-$primary_rx: #216435 !default;
-$secondary_rx: #1f7904 !default;
-$success_rx: #31ae4d !default;
-$info_rx: #34857c !default;
-$warning_rx: #c2dc19 !default;
-$danger_rx: #dc1919 !default;
-$light_rx: #d3e5c5 !default;
-$dark_rx: #0f2d20 !default;
+$primary_rx: #004d37 !default;
+$secondary_rx: #00573f !default;
+$success_rx: #006246 !default;
+$info_rx: #006d4e !default;
+$warning_rx: #007856 !default;
+$danger_rx: #00835e !default;
+$light_rx: #008e66 !default;
+$dark_rx: #00986d !default;
 
 $theme-colors: () !default;
-$theme-colors: map-merge(("primary-rx": $primary_rx,
+$theme-colors: map-merge(
+  (
+    "primary-rx": $primary_rx,
     "secondary-rx": $secondary_rx,
     "success-rx": $success_rx,
     "info-rx": $info_rx,
     "warning-rx": $warning_rx,
     "danger-rx": $danger_rx,
     "light-rx": $light_rx,
-    "dark-rx": $dark_rx), $theme-colors);
-
-
+    "dark-rx": $dark_rx,
+  ),
+  $theme-colors
+);
 
 //  $colors:();
 //  $theme-colors:();

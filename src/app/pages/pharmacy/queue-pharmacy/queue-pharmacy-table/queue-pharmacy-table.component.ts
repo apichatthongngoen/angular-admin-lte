@@ -31,8 +31,9 @@ export class QueuePharmacyTableComponent implements OnInit {
   ngOnInit(): void {
     console.log("Table: " + this.tabsGroupQueuePharmacy + " statusQueue : " + this.statusQueue);
 
-    const source = timer(100, 6000);
-    const subscribe = source.subscribe((val) => this.loadData(val));
+    // const source = timer(100, 6000);
+    // const subscribe = source.subscribe((val) => this.loadData(val));
+    this.loadData();
   }
   displayedColumns = ["q", "qn", "name", "time", "statusQueue", "select", "last"];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
@@ -52,19 +53,27 @@ export class QueuePharmacyTableComponent implements OnInit {
     // console.log(row.checked)
   }
 
-  loadData(val: any) {
+  async loadData() {
     // this.results = data1;
     // return this.GetDataServiceService.getDisPay(`servicepoinsub?idServicePoint=1&idServicePointSub=3&statusQueue=${this.statusQueue}&tabsgroupqueuepharmacy=${this.tabsGroupQueuePharmacy}`)
-    return this.getDataServiceService
+
+    this.getDataServiceService
       .getDisPay(
         `servicepoinsub?statusQueue=${this.statusQueue}&idServicePointSub=3&idServicePoint=1&tabsGroupQueuePharmacy=${this.tabsGroupQueuePharmacy}&uiDisplay=queuepharmacy`
       )
-      .subscribe((data: any) => {
-        this.results = data;
-        // console.log("*********----------*********");
-        // console.log(this.statusQueue);
-        // console.log(val);
-      });
+      .subscribe(
+        async (data: any) => {
+          this.results = data;
+          // console.log("*********----------*********");
+          // console.log(this.statusQueue);
+          // console.log(val);
+          await this.timeout(6000);
+          this.loadData();
+        },
+        (err: any) => {
+          this.loadData();
+        }
+      );
   }
   pushQueueAnnounce(val?: QueueItem | number | string, results: any = this.results) {
     let selectedValueServiceChannelTable = this.selectedValueServiceChannelTable;
@@ -163,7 +172,7 @@ export class QueuePharmacyTableComponent implements OnInit {
     console.log(val);
     this.getDataServiceService.postDisPay(`servicepoinsub/problem`, val).subscribe((data) => {
       // this.results = data;
-      this.loadData("");
+      this.loadData();
       // console.log(val)
     });
   }
@@ -173,7 +182,12 @@ export class QueuePharmacyTableComponent implements OnInit {
     console.log(val);
     this.getDataServiceService.postDisPay(`servicepoinsub/successqueue`, val).subscribe((data) => {
       // this.results = data;
-      this.loadData("");
+      this.loadData();
+    });
+  }
+  timeout(ms: number) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
     });
   }
 }

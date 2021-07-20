@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { GetDataServiceService } from "src/app/shared/get-data-service.service";
+import { InterfaceDisplayService } from "src/app/shared/interface/InterfaceQueueDisplayService";
 
 @Component({
   selector: "app-display-main",
@@ -10,14 +12,51 @@ export class DisplayMainComponent implements OnInit {
   public nameDisplayHeading = "จุดรับบริการ รับยา / การเงิน";
   public menu: boolean = true;
   public pageQueueAll: boolean = false;
-  constructor() {}
+  displayService!: InterfaceDisplayService[];
+  constructor(public getDataServiceService: GetDataServiceService) {}
 
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<void> {
+    this.displayService = await await this.getDisplayService();
+    this.displayService.map((data) => {
+      // if (displayService) {
+      //   displayService.forEach((displayServiceItem) => {
+
+      Object.assign(data, { displayServiceItemShow: false });
+
+      //   });
+      // }
+    });
+    console.log(
+      "🚀 ~ file: display-main.component.ts ~ line 19 ~ DisplayMainComponent ~ ngOnInit ~ displayService",
+      this.displayService
+    );
+  }
 
   setMenu(page: string): void {
-    this.menu = false;
-    if (page == "queueall") {
-      this.pageQueueAll = true;
+    console.log("🚀 ~ file: display-main.component.ts ~ line 36 ~ DisplayMainComponent ~ setMenu ~ page", page);
+    if (page) {
+      this.menu = false;
+      this.displayService.map((data) => {
+        if (data.idDisplay == page) {
+          data.displayServiceItemShow = true;
+        }
+      });
     }
+  }
+  getDisplayService(): Promise<InterfaceDisplayService[]> {
+    return new Promise((resolve, reject) => {
+      this.getDataServiceService
+        .getDisPay(
+          `getdisplayservice?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&codeDisplay=600203`
+        )
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error) => {
+            reject();
+          }
+        );
+    });
   }
 }
