@@ -8,12 +8,16 @@
   <div class="col-12 p-2">
     <div class="row">
       <div class="col-3 text-center" *ngFor="let item of dataInfoGroupQueue">
-        <app-queue-all-module-grup-tables [queueAllModuleGroupTables]="item"></app-queue-all-module-grup-tables>
+        <app-queue-all-module-grup-tables
+          [queueAllModuleGroupTables]="item"
+        ></app-queue-all-module-grup-tables>
       </div>
     </div>
   </div>
 
-  <div class="col-12 bg-red p-1 queueAllProblem-header">คิวมีปัญหา กรุณาติดต่อที่ช่องบริการ</div>
+  <div class="col-12 bg-red p-1 queueAllProblem-header">
+    คิวมีปัญหา กรุณาติดต่อที่ช่องบริการ
+  </div>
   <div class="row pt-2">
     <div class="mx-2" *ngFor="let item of queueProblem">
       <div class="card">
@@ -26,7 +30,8 @@
   <div class="row">
     <div class="col-12 bg-green pt-1">
       <h1 *ngIf="allQueueDay">
-        จำนวนผู้มารับบริการ {{ allQueueDay.allQueueDay }} คน จำนวนผู้กำลังรอรับบริการ
+        จำนวนผู้มารับบริการ {{ allQueueDay.allQueueDay }} คน
+        จำนวนผู้กำลังรอรับบริการ
         {{ allQueueDay.timeQueueWaitAll }}
       </h1>
     </div>

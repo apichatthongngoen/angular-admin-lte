@@ -1,7 +1,10 @@
 <div class="container-fluid test-font-size">
   <div class="row Header bg-green">
     <div class="col-12 pt-2">
-      <h1>Scan Barcode &nbsp;&nbsp;<i class="bi bi-upc-scan"></i> &nbsp; ลงทะเบียนใบสั่งยา</h1>
+      <h1>
+        Scan Barcode &nbsp;&nbsp;<i class="bi bi-upc-scan"></i> &nbsp;
+        ลงทะเบียนใบสั่งยา
+      </h1>
     </div>
   </div>
 
@@ -25,7 +28,11 @@
         />
         <div class="input-group-append">
           <!-- <span class="input-group-text" id="basic-addon2">ลงทะเบียน</span> -->
-          <button type="button" class="btn btn-success" (click)="pushCreateQueue(inputHNSearch.value, $event)">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="pushCreateQueue(inputHNSearch.value, $event)"
+          >
             ลงทะเบียน
           </button>
         </div>
@@ -37,13 +44,20 @@
         <div class="col-8">
           <div class="row" *ngIf="printQueueData">
             <div class="col-6">
-              <h3>ชื่อ : {{ printQueueData.fname + " " + printQueueData.lname }}</h3>
+              <h3>
+                ชื่อ : {{ printQueueData.fname + " " + printQueueData.lname }}
+              </h3>
             </div>
             <div class="col-6">
               <h1>คิว : {{ printQueueData.nameQueue }}</h1>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <h2>บันทึกเรียบร้อยแล้ว รอรับยา</h2>
+            </div>
+            <div class="col-12">
+              <h2>
+                จะได้รับบริการในอีก {{ printQueueData.waitQueueTinme }} นาที
+              </h2>
             </div>
           </div>
         </div>

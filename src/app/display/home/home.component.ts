@@ -1,26 +1,26 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
-import { GetDataServiceService } from "../../shared/get-data-service.service";
+import { GetDataServiceService } from '../../shared/get-data-service.service';
 // import { GetKPHSMartCardReader } from '../../shared/KPHSMartCardReader';
-import { HttpClient } from "@angular/common/http";
-import { timer } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { timer } from 'rxjs';
 
-import { QueueItem, QueueGroupPrint } from "../../shared/interface/dataapi";
-import { map } from "rxjs/operators";
+import { QueueItem, QueueGroupPrint } from '../../shared/interface/dataapi';
+import { map } from 'rxjs/operators';
 
 // print queue
-import { NgbModalConfig, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 // import * as pdfMakeConfig from 'pdfmake/build/pdfmake.js';
 // import * as pdfFontsX from 'pdfmake-unicode/dist/pdfmake-unicode.js';
-import * as pdfMake from "pdfmake/build/pdfmake";
-import * as pdfFonts from "../../shared/pdfmake/vfs_fonts";
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from '../../shared/pdfmake/vfs_fonts';
 // import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 (pdfMake as any).fonts = {
   THSarabunNew: {
-    normal: "THSarabunNew.ttf",
-    bold: "THSarabunNew Bold.ttf",
+    normal: 'THSarabunNew.ttf',
+    bold: 'THSarabunNew Bold.ttf',
   },
 };
 // import * as JsBarcode from "JsBarcode";
@@ -31,15 +31,15 @@ import * as pdfFonts from "../../shared/pdfmake/vfs_fonts";
 // import * as pdfMake from 'pdfmake/build/pdfmake';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   @Input() pdf: any;
-  @ViewChild("inputHNSearch", { static: false }) inputElem: ElementRef;
-  @ViewChild("Loading", { static: false }) LoadingElem: ElementRef;
-  @ViewChild("missLoading", { static: false }) missLoadingElem: ElementRef;
+  @ViewChild('inputHNSearch', { static: false }) inputElem: ElementRef;
+  @ViewChild('Loading', { static: false }) LoadingElem: ElementRef;
+  @ViewChild('missLoading', { static: false }) missLoadingElem: ElementRef;
   // @ViewChild("output", { static: false }) outputElem: HTMLIFrameElement;
 
   public results: QueueItem[];
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   public cid: string;
   public cid1: string;
   public loadingStatus: boolean = false;
-  inputHNSearchVal: string = "";
+  inputHNSearchVal: string = '';
 
   constructor(
     public getDataServiceService: GetDataServiceService,
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
     config: NgbModalConfig,
     private modalService: NgbModal
   ) {
-    config.backdrop = "static";
+    config.backdrop = 'static';
     config.keyboard = false;
   }
 
@@ -69,31 +69,31 @@ export class HomeComponent implements OnInit {
   }
 
   private charArray: [number, string][] = [
-    [3592, "0"],
-    [3653, "1"],
-    [47, "2"],
-    [45, "3"],
-    [3616, "4"],
-    [3606, "5"],
-    [3640, "6"],
-    [3638, "7"],
-    [3588, "8"],
-    [3605, "9"],
+    [3592, '0'],
+    [3653, '1'],
+    [47, '2'],
+    [45, '3'],
+    [3616, '4'],
+    [3606, '5'],
+    [3640, '6'],
+    [3638, '7'],
+    [3588, '8'],
+    [3605, '9'],
   ];
   private charMap: Map<number, string> = new Map(this.charArray);
 
   pushCreateQueue(inputHNSearch: string, event?: any) {
     console.log(
-      "🚀 ~ file: home.component.ts ~ line 91 ~ HomeComponent ~ pushCreateQueue ~ this.loadingStatus",
+      '🚀 ~ file: home.component.ts ~ line 91 ~ HomeComponent ~ pushCreateQueue ~ this.loadingStatus',
       this.loadingStatus
     );
     // console.log(event);
     let data = {
-      id: "1",
+      id: '1',
       hn: inputHNSearch,
     };
     if (!this.loadingStatus) {
-      this.loading("open");
+      this.loading('open');
     }
 
     // this.getKPHSMartCardReader.loadData();
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
         this.getDataServiceService.postAPI(`createqueue`, data).subscribe(
           (data: any) => {
             console.log(
-              "🚀 ~ file: home.component.ts ~ line 94 ~ HomeComponent ~ this.getDataServiceService.postAPI ~ data",
+              '🚀 ~ file: home.component.ts ~ line 94 ~ HomeComponent ~ this.getDataServiceService.postAPI ~ data',
               data
             );
             // this.results = data;
@@ -112,18 +112,22 @@ export class HomeComponent implements OnInit {
             if (data && !data.error) {
               this.printQueue(data);
             } else {
-              this.missLoading("open");
+              this.missLoading('open');
               setTimeout(() => {
-                this.loading("dismiss");
+                this.loading('dismiss');
               }, 3000);
             }
             // alert(data.nameQueue || 'ERROR');
           },
           (error?: any) => {
             console.log(
-              "🚀 ~ file: home.component.ts ~ line 94 ~ HomeComponent ~ this.getDataServiceService.postAPI ~ data222",
-              error + "111"
+              '🚀 ~ file: home.component.ts ~ line 94 ~ HomeComponent ~ this.getDataServiceService.postAPI ~ data222',
+              error + '111'
             );
+            this.missLoading('open');
+            setTimeout(() => {
+              this.loading('dismiss');
+            }, 3000);
             console.log(55);
           },
           () => {
@@ -147,7 +151,8 @@ export class HomeComponent implements OnInit {
       // this.inputHNSearchVal.val(
       //   this.inputHNSearchVal.val() + thsi.charMap.get(event.charCode)
       // );
-      this.inputHNSearchVal = this.inputHNSearchVal + this.charMap.get(event.charCode);
+      this.inputHNSearchVal =
+        this.inputHNSearchVal + this.charMap.get(event.charCode);
     }
   }
   printQueue(data: QueueGroupPrint): void {
@@ -157,7 +162,7 @@ export class HomeComponent implements OnInit {
         x = `-รอห้องการเงินเรียก \n -รอเรียกรับยา`;
       }
       this.pdf = {
-        pageSize: "A4",
+        pageSize: 'A4',
         pageMargins: [20, 0, 435, 30],
         content: [
           // {
@@ -166,6 +171,10 @@ export class HomeComponent implements OnInit {
           // },
           {
             text: ` คิวรับยา`,
+            fontSize: 20,
+          },
+          {
+            text: ` ประเภท ` + data.queueGroupPurport,
             fontSize: 20,
           },
           // { image: this.textToBase64Barcode(data.hn), width: 100 },
@@ -187,27 +196,30 @@ export class HomeComponent implements OnInit {
             fontSize: 15,
             // pageBreak: "after",
           },
+          {
+            text: `จะได้รับบริการในอีก ` + data.waitQueueTinme + ` นาที`,
+            fontSize: 15,
+            // pageBreak: "after",
+          },
         ],
         defaultStyle: {
-          font: "THSarabunNew",
+          font: 'THSarabunNew',
           bold: true,
           fontSize: 14,
         },
       };
       // pdfMake.createPdf(this.pdf).print();
       this.printQueueData = data;
-
       setTimeout(() => {
-        const win = window.open("", "tempWinForPdf");
+        const win = window.open('', 'tempWinForPdf');
         pdfMake.createPdf(this.pdf).print({}, win);
         setTimeout(() => {
           win.close();
-          this.loading("dismiss");
+          this.loading('dismiss');
         }, 2000);
       }, 1000);
-
       setTimeout(() => {
-        this.printQueueData.nameQueue = "";
+        this.printQueueData.nameQueue = '';
         this.printQueueData = undefined;
       }, 10000);
       // win.close();
@@ -232,12 +244,14 @@ export class HomeComponent implements OnInit {
   //   return canvas.toDataURL("image/png");
   // }
   getKPHSMartCardReader() {
-    return this.getDataServiceService.getKPHSMartCardReader().subscribe((data) => {
-      // this.results = data;
-      this.cid = data.CID;
-      // console.log(data);
-      // this.getDataFromIDCard(data.CID);
-    });
+    return this.getDataServiceService
+      .getKPHSMartCardReader()
+      .subscribe((data) => {
+        // this.results = data;
+        this.cid = data.CID;
+        // console.log(data);
+        // this.getDataFromIDCard(data.CID);
+      });
   }
   // getDataFromIDCardTimeOut() {
   //   setTimeout(() => {
@@ -271,7 +285,7 @@ export class HomeComponent implements OnInit {
   clickNumberButton(number) {
     var searchText = this.inputHNSearchVal;
     if (searchText.length < 13) {
-      this.inputHNSearchVal = this.inputHNSearchVal + "" + number;
+      this.inputHNSearchVal = this.inputHNSearchVal + '' + number;
     }
     this.focusSearchText();
   }
@@ -280,11 +294,11 @@ export class HomeComponent implements OnInit {
     this.focusSearchText();
   }
   clickClearButton() {
-    this.inputHNSearchVal = "";
+    this.inputHNSearchVal = '';
     this.focusSearchText();
   }
   focusSearchText() {
-    document.getElementById("searchText").focus();
+    document.getElementById('searchText').focus();
   }
   focusSearchTextloop() {
     this.focusSearchText();
@@ -293,18 +307,18 @@ export class HomeComponent implements OnInit {
     }, 1000);
   }
   loading(params: string): void {
-    if (params == "open") {
+    if (params == 'open') {
       this.modalService.open(this.LoadingElem);
-    } else if (params == "dismiss") {
+    } else if (params == 'dismiss') {
       this.modalService.dismissAll(this.LoadingElem);
       this.loadingStatus = false;
       this.clickClearButton();
     }
   }
   missLoading(params: string): void {
-    if (params == "open") {
+    if (params == 'open') {
       this.modalService.open(this.missLoadingElem);
-    } else if (params == "dismiss") {
+    } else if (params == 'dismiss') {
       this.modalService.dismissAll(this.missLoadingElem);
     }
   }
