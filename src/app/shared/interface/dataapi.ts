@@ -109,4 +109,6 @@ export declare interface QueueGroupPrint {
   age: number;
   Date: string;
   bypassFinancial: number;
+  queueGroupPurport: string;
+  waitQueueTinme: number;
 }

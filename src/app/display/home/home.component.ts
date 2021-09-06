@@ -173,6 +173,10 @@ export class HomeComponent implements OnInit {
             text: ` คิวรับยา`,
             fontSize: 20,
           },
+          {
+            text: ` ประเภท ` + data.queueGroupPurport,
+            fontSize: 20,
+          },
           // { image: this.textToBase64Barcode(data.hn), width: 100 },
           {
             text: `คิว ` + data.nameQueue,
@@ -189,6 +193,11 @@ export class HomeComponent implements OnInit {
           },
           {
             text: data.Date,
+            fontSize: 15,
+            // pageBreak: "after",
+          },
+          {
+            text: `จะได้รับบริการในอีก ` + data.waitQueueTinme + ` นาที`,
             fontSize: 15,
             // pageBreak: "after",
           },

@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { InterfaceAllQueueDay } from "src/app/shared/interface/InterfaceAllQueueDay";
+import { Component, OnInit } from '@angular/core';
+import { InterfaceAllQueueDay } from 'src/app/shared/interface/InterfaceAllQueueDay';
 // import { InterfaceDisplayGroupAllDataQueue } from "src/app/shared/interface/InterfaceDisplayGroupAllDataQueue";
-import { GetDataServiceService } from "../../../shared/get-data-service.service";
-import { InterfaceQueueGroup } from "../../../shared/interface/InterfaceQueueGroup";
+import { GetDataServiceService } from '../../../shared/get-data-service.service';
+import { InterfaceQueueGroup } from '../../../shared/interface/InterfaceQueueGroup';
 export declare interface InterfaceQueueItemByStatus {
   nameQueue: string;
 }
 @Component({
-  selector: "app-queue-all",
-  templateUrl: "./queue-all.component.html",
-  styleUrls: ["./queue-all.component.scss"],
+  selector: 'app-queue-all',
+  templateUrl: './queue-all.component.html',
+  styleUrls: ['./queue-all.component.scss'],
 })
 export class QueueAllComponent implements OnInit {
   // queueAllModuleGroupTables: InterfaceDisplayGroupAllDataQueue[];
@@ -37,7 +37,9 @@ export class QueueAllComponent implements OnInit {
   }
   private getDataInfoGroupQueue() {
     return this.getDataServiceService
-      .getDisPay(`countqueuegroup?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3`)
+      .getDisPay(
+        `countqueuegroup?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3`
+      )
       .subscribe(
         (data: any) => {
           this.dataInfoGroupQueue = data;
@@ -50,7 +52,9 @@ export class QueueAllComponent implements OnInit {
   private async getQueueItemLast(): Promise<void> {
     return new Promise<void>((resolve, reject) =>
       this.getDataServiceService
-        .getDisPay(`queueitemlast?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3`)
+        .getDisPay(
+          `queueitemlast?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3`
+        )
         .subscribe(
           (queueitemLast: any) => {
             // this.dataInfoGroupQueue = data;
@@ -64,10 +68,15 @@ export class QueueAllComponent implements OnInit {
                 queueitemLast.forEach((queueItem) => {
                   if (data.idQueueGroup == queueItem.idQueueGroup) {
                     Object.assign(data, { queueItem });
+                    console.log(
+                      '🚀 ~ file: queue-all.component.ts ~ line 71 ~ QueueAllComponent ~ queueitemLast.forEach ~ data',
+                      data
+                    );
                   }
                 });
               }
             });
+            console.log(this.dataInfoGroupQueue);
             resolve();
           },
           (err) => {
@@ -78,7 +87,9 @@ export class QueueAllComponent implements OnInit {
   }
   private async getQueueproblem() {
     return this.getDataServiceService
-      .getDisPay(`queueitembystatusqueue?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&statusQueue=2`)
+      .getDisPay(
+        `queueitembystatusqueue?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&statusQueue=2`
+      )
       .subscribe(
         (queueproblem: any) => {
           this.queueProblem = queueproblem;
@@ -90,10 +101,15 @@ export class QueueAllComponent implements OnInit {
   }
   private async getAllQueueDay() {
     return this.getDataServiceService
-      .getDisPay(`getallqueueday?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&statusQueue=2`)
+      .getDisPay(
+        `getallqueueday?uiDisplay=pharmacdyisplay&idServicePoint=1&idServicePointSub=3&statusQueue=2`
+      )
       .subscribe(
         (data: any) => {
-          console.log("🚀 ~ file: queue-all.component.ts ~ line 84 ~ QueueAllComponent ~ .subscribe ~ data", data);
+          console.log(
+            '🚀 ~ file: queue-all.component.ts ~ line 84 ~ QueueAllComponent ~ .subscribe ~ data',
+            data
+          );
           this.allQueueDay = data;
         },
         (error: any) => {

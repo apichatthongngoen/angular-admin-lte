@@ -11,4 +11,5 @@ interface InterfaceQueueItemLast {
   nameQueue: string;
   timeQueue: number;
   timeQueueWait: number;
+  queueGroupPurport: string;
 }
